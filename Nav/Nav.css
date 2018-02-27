@@ -1,0 +1,23 @@
+.navbar{
+  overflow: hidden;
+  background-color:  font-family: Arial;
+}
+
+.navbar a{
+  float: left;
+  color: Purple;
+  padding: 10px 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.navbar a:hover{
+  background-color: AliceBlue;
+  color: DarkSlateBlue;
+  font-family: Georgia;
+}
+
+.navbar a.active{
+  background-color: Gold;
+  color: DodgerBlue;
+}
