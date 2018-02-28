@@ -31,7 +31,7 @@ render() {
             <div
               className="gridItem" key={`gridItem${index}`}
             >
-            <img src={require('../../images/'+image)} className="gridItem"/>
+            <img src={require('../../images/'+image)} className="gridImage"/>
             </div>
           ))}
         </div>
