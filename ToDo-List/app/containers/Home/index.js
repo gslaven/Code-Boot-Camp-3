@@ -15,7 +15,7 @@ export default class Home extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      listItems:[],
+      listItems:[""],
       inputItem:""
     };
   }
