@@ -13,23 +13,12 @@ import './styleM.css';
 
 export default class Home extends React.PureComponent {
 
-constructor() {
-  super();
-  this.state = {
-    images: [
-      "PopCorn By its Lonesome - Caramel" + ".jpg",
-      "PopCorn By its Lonesome - Cheese - Bifurcated" + ".jpg",
-      "PopCorn By its Lonesome - Cheese" + ".jpg",
-      "PopCorn By its Lonesome - Plain - Inside Look at Furls" + ".jpg",
-      "PopCorn By its Lonesome - Plain" + ".jpg"
-    ]
-  }
-}
-
   render() {
     return (
       <div className="container">
-        <Helmet title="Home" meta={[ { name: 'description', content: 'Description of Home' }]}/>
+        <Helmet title="PopCorn Time Machine" meta={[ { name: "description", content: "An attempt to leverage the computing power of the devices " +
+                  "we carry around with us everday to remove the phrase 'BURNT  PopCorn'"  +
+                  "from the world's lexicon."}]}/>
           <Grid />
       </div>
     );

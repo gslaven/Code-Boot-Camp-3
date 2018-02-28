@@ -29,7 +29,7 @@ render() {
         <div className="grid" >
           {this.state.images.map((image, index) => (
             <div
-              className="gridItem" key={`gridItem${index}`}
+             className="gridItem" key={`gridItem${index}`}
             >
             <img src={require('../../images/'+image)} className="gridImage"/>
             </div>
