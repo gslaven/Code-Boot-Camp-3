@@ -1,0 +1,71 @@
+body{
+  background-color: #FFBDAA;
+  align-content: center;
+  background-image:
+  url("quantum-lights-shutterstock-675x-675x380.jpg");
+}
+
+h1{
+  color:#FFBDAA;
+}
+
+p{
+  color:#AD8CAF;
+  border:5px solid #6F90A2;
+  padding:1px
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th, caption{
+  background-color: #FFBDAA;
+  font-size: 16px;
+  border: 1px solid #802E16;
+  align-self: center;
+  text-align: center;
+  padding: 1px;
+}
+
+tr:nth-child(even) {
+  background-color: #551300;
+  color: yellow;
+}
+
+tr:nth-child(odd) {
+  background-color: yellow;
+  color: #551300;
+}
+
+.quote{
+  background-color: #FFBDAA;
+  color:#AA5239;
+  padding:2px;
+}
+
+.quoteChanged{
+  background-color:violet;
+  color:tan;
+  padding:5px;
+}
+
+.city{
+  background-color: tomato;
+  color:white;
+  padding:5px;
+}
+
+.state{
+  background-color: paleblue;
+  color:white;
+  padding:10px;
+}
+
+.country{
+  background-color: #ff66ff;
+  color:white;
+  padding:15px;
+}

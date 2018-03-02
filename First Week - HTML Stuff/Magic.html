@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic and Visibility</title>
+</head>
+<body>
+
+<p id="magician">I can disappear</p>
+<button type="button" onclick=Invisible()>Abracadabra! Poof he's gone!</button>
+<button type="button" onclick=Revisible()>Abracadabra! In Reverse</button>
+
+<script>
+  function Invisible() {
+    document.getElementById('magician').style.visibility = "hidden";
+  }
+  function Revisible() {
+    document.getElementById('magician').style.visibility = "visible";
+  }
+</script>
+
+</body>
+</html>

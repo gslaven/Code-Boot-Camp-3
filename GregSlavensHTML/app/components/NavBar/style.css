@@ -1,0 +1,35 @@
+/* NavBar Styles */
+.navBar {
+  float: left;
+  overflow: hidden;
+  background-color: Black;
+  font-family: Arial;
+  color: PaleGreen;
+  font-size: 20px;
+  text-align: center;
+  font-variant: small-caps;
+  padding: 10px 10px 10px 10px;
+}
+
+.navBarSpan {
+  color: DarkGray;
+}
+
+.navBar a {
+  color: Purple;
+  padding: 10px 10px;
+  font-size: 20px;
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.navBarItem a:hover {
+  background-color: Black;
+  color: Black;
+  font-family: Georgia;
+}
+
+.navBar a.active {
+  background-color: PaleGreen;
+  color: Black;
+}
