@@ -30,6 +30,13 @@
 }
 
 .navBar a.active {
-  background-color: PaleGreen;
+  background-color: Red;
   color: Black;
+}
+
+.navBar img {
+    padding-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 0px;
 }
