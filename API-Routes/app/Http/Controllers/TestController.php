@@ -26,7 +26,7 @@ class TestController extends Controller
 
     if($validator->fails())
     {
-      returnResponse::json(['error' => 'Please fill in all fields.']);
+      return Response::json(['error' => 'Please fill in all fields.']);
     }
 
     $name = $request->input('name');

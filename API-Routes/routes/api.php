@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('getData', 'TestController@index');
 Route::post('postData', 'TestController@store');
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
