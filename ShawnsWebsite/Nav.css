@@ -8,7 +8,8 @@
   font-size: 20px;
   text-align: center;
   font-variant: small-caps;
-  padding: 10px 10px 10px 10px;
+  padding: 15px 15px 15px 15px;
+  margin: 0px 0px 0px 0px;
 }
 
 .navBarSpan {
@@ -17,7 +18,6 @@
 
 .navBar a {
   color: DarkGray;
-  padding: 10px 10px;
   font-size: 20px;
   text-align: center;
   font-variant: small-caps;
@@ -26,7 +26,6 @@
 .navBar a:hover {
   background-color: DarkGray;
   color: Black;
-  font-family: Georgia;
 }
 
 .navBar a.active {
@@ -35,8 +34,27 @@
 }
 
 .navBar img {
-    padding-top: 0px;
-    padding-right: 30px;
-    padding-bottom: 0px;
-    padding-left: 0px;
+  float: None;
+  padding-top: 0px;
+  padding-right: 15px;
+}
+
+.table {
+  float: none;
+  width: 100%;
+  min-width: 880px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+/* Mobile Styles */
+@media (max-width: 450px) {
+  .grid {
+    flex-direction: column;
+  }
+
+  .gridItem {
+    width: 100%;
+    margin: 0;
+  }
 }
