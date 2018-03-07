@@ -45,4 +45,33 @@ class AuthController extends Controller
 
     return Response::json(['success' => 'Thanks for signing up']);
   }
+  public function signIn(Request $request)
+  {
+    $rules =
+    [
+      'email' => 'required',
+      'password' => 'required'
+    ];
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+
+    if($validator->fails())
+    {
+      return Response::json(['error' => 'Please fill in all fields.']);
+    }
+
+    $email = $request->input('email');
+    $password = $request->input('password');
+    $credentials = compact("email", "password");
+
+    $token = JWTAuth::attempt($credentials);
+
+    if($token == false)
+    {
+      return Response::json(['error' => 'Wrong Email/Password']);
+    }
+    else
+    {
+      return Response::json(['token' => $token]);
+    }
+  }  
 }
