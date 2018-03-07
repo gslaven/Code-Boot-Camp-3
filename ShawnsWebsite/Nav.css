@@ -8,8 +8,6 @@
   font-size: 20px;
   text-align: center;
   font-variant: small-caps;
-  padding: 15px 15px 15px 15px;
-  margin: 0px 0px 0px 0px;
 }
 
 .navBarSpan {
@@ -34,17 +32,28 @@
 }
 
 .navBar img {
-  float: None;
+  margin-top: 0px;
+  margin-bottom: 0px ;
+  margin-left: 5px ;
+  margin-right: 5px ;
   padding-top: 0px;
-  padding-right: 15px;
+  padding-bottom: 0px ;
+  padding-left: 0px ;
+  padding-right: 0px ;
 }
 
 .table {
   float: none;
   width: 100%;
-  min-width: 880px;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+  /*min-width: 880px;*/
+  margin-top: 0px;
+  margin-bottom: 0px ;
+  margin-left: 0px ;
+  margin-right: 0px ;
+  padding-top: 0px;
+  padding-bottom: 0px ;
+  padding-left: 0px ;
+  padding-right: 0px ;
 }
 
 /* Mobile Styles */
@@ -55,6 +64,31 @@
 
   .gridItem {
     width: 100%;
-    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 0px ;
+    margin-left: 0px ;
+    margin-right: 0px ;
+    padding-top: 0px;
+    padding-bottom: 0px ;
+    padding-left: 0px ;
+    padding-right: 0px ;
   }
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.flex-container > div {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px ;
+  margin-left: 0px ;
+  margin-right: 0px ;
+  padding-top: 5px;
+  padding-bottom: 5px ;
+  padding-left: 5px ;
+  padding-right: 5px ;
+  text-align: left;
 }
