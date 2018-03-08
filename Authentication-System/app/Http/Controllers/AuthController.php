@@ -14,64 +14,78 @@ use App\User;
 
 class AuthController extends Controller
 {
-  public function signUp(Request $request)
-  {
-    $rules =
-    [
-      'email' => 'required',
-      'name' => 'required',
-      'password' => 'required'
-    ];
-
-    $validator = Validator::make(Purifier::clean($request->all()), $rules);
-
-    if($validator->fails())
+    public function __construct()
     {
-      return Response::json(['error' => 'Please fill in all fields.']);
+        $this->Middleware('jwt.auth', ['only' => ['getUser']]);
+    }  
+
+    public function signUp(Request $request)
+    {
+        $rules =
+        [
+            'email' => 'required',
+            'name' => 'required',
+            'password' => 'required'
+        ];
+
+        $validator = Validator::make(Purifier::clean($request->all()), $rules);
+
+        if($validator->fails())
+        {
+            return Response::json(['error' => 'Please fill in all fields.']);
+        }
+
+        $email = $request->input('email');
+        $name = $request->input('name');
+        $password = $request->input('password');
+
+        $password = Hash::make($password);
+
+        $user = new User;
+        $user->email = $email;
+        $user->name = $name;
+        $user->password = $password;
+        $user->roleID = 2;
+        $user->save();
+
+        return Response::json(['success' => 'Thanks for signing up']);
     }
 
-    $email = $request->input('email');
-    $name = $request->input('name');
-    $password = $request->input('password');
-
-    $password = Hash::make($password);
-
-    $user = new User;
-    $user->email = $email;
-    $user->name = $name;
-    $user->password = $password;
-    $user->roleID = 2;
-    $user->save();
-
-    return Response::json(['success' => 'Thanks for signing up']);
-  }
-  public function signIn(Request $request)
-  {
-    $rules =
-    [
-      'email' => 'required',
-      'password' => 'required'
-    ];
-    $validator = Validator::make(Purifier::clean($request->all()), $rules);
-
-    if($validator->fails())
+    public function signIn(Request $request)
     {
-      return Response::json(['error' => 'Please fill in all fields.']);
-    }
+        $rules =
+        [
+            'email' => 'required',
+            'password' => 'required'
+        ];
 
-    $email = $request->input('email');
-    $password = $request->input('password');
-    $credentials = compact("email", "password");
+        $validator = Validator::make(Purifier::clean($request->all()), $rules);
 
-    $token = JWTAuth::attempt($credentials);
+        if($validator->fails())
+        {
+            return Response::json(['error' => 'Please fill in all fields.']);
+        }
 
-    if($token == false)
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $credentials = compact("email", "password");
+
+        $token = JWTAuth::attempt($credentials);
+
+        if($token == false)
+        {
+            return Response::json(['error' => 'Wrong Email/Password']);
+        }
+        else
+        {
+            return Response::json(['token' => $token]);
+        }
+    }  
+    
+    public function getUser()
     {
-      return Response::json(['error' => 'Wrong Email/Password']);
-    }
-    else
-    {
-      return Response::json(['token' => $token]);
-    }
-  }  
+        $id = Auth::id();
+        $user = User::find($id);
+        return Response::json(['user' => $user]);
+    }  
 }
