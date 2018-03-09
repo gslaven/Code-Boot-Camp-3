@@ -64,9 +64,10 @@ class Club
   {
     this._loft = loft;
   }
+
+    //Gets weight of club through a calculation by fnCalcWeight
   get Weight()
   {
-    //returns the calculated weight given by the function fnCalcWeight
     return fnCalcWeight(this.Shaft, this.Length);
   }
 }
@@ -99,10 +100,11 @@ function fnCalcWeight(paramShaft, paramLength)
 //Concrete Class - Driver
 class Driver extends Club // extends = <----- Inheritance ----->
 {
-  Swing(paramClub) 
+  //<----- Polymorphism -----> Two Swing functions, different results
+  Swing() 
   {
-    return "Place ball just inside front foot of your stance.  Start backswing and rotate as far as you comfortablly can.  Start downswing and let 'er rip!!"
-
+    //todo: Use paramClub to modify
+    return "<----- DRIVER Swing ----->  Address teed ball with feet set shoulder width apart.  Place ball just inside front foot of your stance.  Start backswing and rotate as far as you comfortablly can.  Start downswing and let 'er rip!!";
   }
 
 }
@@ -112,14 +114,19 @@ class NineIron extends Club // extends = <----- Inheritance ----->
   constructor(length, shaft, grip, loft, chipping)
   {
     super(length, shaft, grip, loft);
-    
-
+    this._chipping = chipping;
   }
-
-  Swing(paramClub) 
+  //<----- Polymorphism -----> Two Swing functions, different results
+  Swing()
   {
-    return "Place ball just inside front foot of your stance.  Start backswing and rotate as far as you comfortablly can.  Start downswing and let 'er rip!!"
-
+    if (chipping) 
+    {
+      return "<----- CHIPPING Nine Iron Swing ----->  Address ball with feet together and slighlty off angle towards hole.  Place ball slightly behind your back foot. Start backswing and rotate 1/2 to 3/4 of a normal backswing.  Start downswing and hit behind the ball in a downward motion.";
+    }
+    else 
+    {
+      return "<----- APPROACH Nine Iron Swing ----->  Address ball with feet slightly less than shoulder width apart.  Place ball in line with your back heel. Start backswing and rotate as far as you comfortablly can. Start downswing and hit behind the ball in a downward motion.";
+    }
   }
 
 }
@@ -130,24 +137,36 @@ let outputDiv = document.getElementById("output");
 //Create a HTML Unstructured List (ul) element to store the tests and results for display
 let varResultsUl = document.createElement("ul");
 
-function Test ()
+function Test (paramClubName, paramClub)
+{
+  //test the club instantiation with values passed by user
+  paramClub.Length = paramClub.Length;
+  paramClub.Shaft = paramClub.Shaft;
+  paramClub.Grip = paramClub.Grip;
+  paramClub.Loft = paramClub.Loft;
+  TestDisplayBuilder(paramClubName, paramClub);
+}
+
+function TestDisplayBuilder (paramClubName, paramClub)
 {
   //Test description to be displayed in HTML
-  fnDisplayTestName("Raw Club Instantiation, default or no values");
-
-  //Test the club instantiation and set the variables
-  let varClub = new Club(-1, "testClubShaft", "testClubGrip", -1 );
-  fnDisplayLoopResults(varClub);
+  fnDisplayTestName(paramClubName + " Instantiation, default or no values");
 
   //Test description to be displayed in HTML
-  fnDisplayTestName("Driver Instantiation, random settings but different from default club");
+  fnDisplayTestName(paramClubName + " Weight Calculation");
+  //Display the Club Weight
+  fnDisplayClubWeight(paramClub);
 
-  //test the club instantiation by changing values
-  varClub.Length = 48;
-  varClub.Shaft = "Steel";
-  varClub.Grip = "Foam";
-  varClub.Loft = 12;
-  fnDisplayLoopResults(varClub);
+  //Test description to be displayed in HTML
+  fnDisplayTestName(paramClubName + " Swing Instructions");
+  //Display the Club Swing Instructions
+  fnDisplayClubSwing(paramClub);
+  
+  //Test description to be displayed in HTML
+  fnDisplayTestName(paramClubName + " Instantiation, changing values with setters");
+
+  //test the club instantiation by changing values with setters
+  fnDisplayLoopPropertiesResults(paramClub);
 }
 
 function fnDisplayTestName(paramTestName) 
@@ -168,7 +187,7 @@ function fnDisplayTestName(paramTestName)
   outputDiv.appendChild(varResultsUl);
 }
 
-function fnDisplayLoopResults(paramClub) 
+function fnDisplayLoopPropertiesResults(paramClub) 
 {
   //Create a new List Item (li) to add to the UL
   let varResultsLI = document.createElement("li");
@@ -184,8 +203,22 @@ function fnDisplayLoopResults(paramClub)
     varResultsLI.appendChild(varResultsNode);
   }
 
-  //Test description to be displayed in HTML
-  fnDisplayTestName("Club weightInstantiation, default or no values");
+  //Append Node Text to List Item
+    varResultsLI.appendChild(varResultsNode);
+
+  //Take results of the for loop and display them in a list
+  varResultsUl.appendChild(varResultsLI);
+  //Displays the results of the js setting variables and Classes
+  outputDiv.appendChild(varResultsUl);
+}
+
+function fnDisplayClubWeight(paramClub) 
+{
+  //Create a new List Item (li) to add to the UL
+  let varResultsLI = document.createElement("li");
+
+  //Create a HTML Text Node to display the tests results
+  let varResultsNode = document.createTextNode("");
     
   //Create a HTML Text Node to display the function fnGetWeight results
   varResultsNode = document.createTextNode(paramClub.Weight);
@@ -196,4 +229,35 @@ function fnDisplayLoopResults(paramClub)
   //Displays the results of the js setting variables and Classes
   outputDiv.appendChild(varResultsUl);
 }
-Test();
+
+function fnDisplayClubSwing(paramClub) 
+{
+  //Create a new List Item (li) to add to the UL
+  let varResultsLI = document.createElement("li");
+
+  //Create a HTML Text Node to display the tests results
+  let varResultsNode = document.createTextNode("");
+    
+  //Create a HTML Text Node to display the function fnGetWeight results
+  varResultsNode = document.createTextNode(paramClub.Swing);
+  varResultsLI.appendChild(varResultsNode);
+
+  //Take results of the for loop and display them in a list
+  varResultsUl.appendChild(varResultsLI);
+  //Displays the results of the js setting variables and Classes
+  outputDiv.appendChild(varResultsUl);
+}
+//Test New Driver
+let varDriver = new Driver(65, "Steel", "Rubber", 12);
+//Put it through it's paces
+Test("Driver", varDriver);
+
+//Test New Nine Iron with a chipping approach
+let varNineIronChip = new NineIron(36, "Graphite", "Super Foam", 45, true);
+//Put it through it's paces
+Test("9-Iron - CHIPPING Approach", varNineIronChip);
+
+//Test New Nine Iron with a Full approach
+let varNineIron = new NineIron(36, "Graphite", "Super Foam", 45, false);
+//Put it through it's paces
+Test("9-Iron - FULL Approach", varNineIron);
