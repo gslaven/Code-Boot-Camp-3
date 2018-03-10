@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import '!file-loader?name=[name].[ext]!./favicon.ico';
+import '!file-loader?name=[name].[ext]!./PopCorn By its Lonesome - Plain.jpg';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 
 import App from 'containers/App';
