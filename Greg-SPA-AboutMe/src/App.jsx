@@ -42,15 +42,17 @@ const App = () => (
             <img src={logo} className="App-logo" alt="logo" />
             <NavBar />
         </header>
-        <Router>
-            <div>
-                <Switch>
-                    <Route path="/Home" component={Home} />
-                    <Route path="/Contact" component={Contact} />
-                    <Route component={Home} />
-                </Switch>
-            </div>
-        </Router>
+        <Fade>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route path="/Home" component={Home} />
+                        <Route path="/Contact" component={Contact} />
+                        <Route component={Home} />
+                    </Switch>
+                </div>
+            </Router>
+        </Fade>
         <p className="App-intro">
         </p>
     </div>
