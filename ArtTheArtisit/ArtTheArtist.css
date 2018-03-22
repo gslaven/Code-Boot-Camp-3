@@ -24,6 +24,9 @@ body {
   color: var(--Text);
 }
 
+form {
+background-color: var(--CaptAmerica)}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
