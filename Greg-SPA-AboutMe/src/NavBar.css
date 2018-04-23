@@ -1,38 +1,34 @@
-#NavBar {
-/* NavBar Styles */
-
 .NavBar {
-float: left;
-overflow: hidden;
-background-color: Black;
-font-family: Arial;
-color: PaleGreen;
-font-size: 20px;
-text-align: center;
-font-variant: small-caps;
-padding: 10px 10px 10px 10px;
+    float: left;
+    overflow: hidden;
+    background-color: Black;
+    font-family: Arial;
+    color: PaleGreen;
+    font-size: 20px;
+    text-align: center;
+    font-variant: small-caps;
+    padding: 10px 10px 10px 10px;
 }
 
 .NavBarSpan {
-color: DarkGray;
+    color: DarkGray;
 }
 
 .NavBar a {
-color: Purple;
-padding: 10px 10px;
-font-size: 20px;
-text-align: center;
-font-variant: small-caps;
+    color: Purple;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    font-variant: small-caps;
 }
 
 .NavBarItem a:hover {
-background-color: Black;
-color: Black;
-font-family: Georgia;
+    background-color: Black;
+    color: Black;
+    font-family: Georgia;
 }
 
 .NavBar a.active {
-background-color: PaleGreen;
-color: Black;
-}
+    background-color: PaleGreen;
+    color: Black;
 }
