@@ -8,11 +8,11 @@ let state = prompt("Enter your State");
 let city = prompt("Enter your City");
 
 // Display variables for the website
-let dispCityState = ("Conditions currently in " + city + ", " + state + ": \n");
-let dispTemp = ("Temperature: \n");
-let dispHum = ("Humidity: \n");
-let dispWindDirection = ("Wind Direction: \n");
-let dispWindSpeed = ("Wind Speed: \n");
+let dispCityState = ("Conditions currently in ");
+let dispTemp = ("Temperature: ");
+let dispHum = ("Humidity: ");
+let dispWindDirection = ("Wind Direction: ");
+let dispWindSpeed = ("Wind Speed: ");
 
 // Variables to hold values to be displayed
 let varTemp;
@@ -32,17 +32,23 @@ function processRequest(e) {
         console.log(response);
         console.log("Error in response? ('error' in response)");
         console.log("error" in response);
-        if ("error" in response) {
+        if ("error" in response.response) {
             console.log("Error found in response object");
             // response.current_observation.temp_c);
             displayError();
         } else {
             console.log("No Error");
             // response.current_observation.temp_c);
-            varTemp = response.current_observation.temp_f;
-            varHum = response.current_observation.relative_humidity;
-            varWindDirection = response.current_observation.wind_dir;
-            varWindSpeed = response.current_observation.wind_mph;
+            dispCityState = dispCityState +
+                response.current_observation.observation_location.full + "<br>";
+            varTemp =
+                response.current_observation.temperature_string + "<br>";
+            varHum =
+                " "+response.current_observation.relative_humidity + "<br>";
+            varWindDirection =
+                response.current_observation.wind_dir + "<br>";
+            varWindSpeed =
+                response.current_observation.wind_mph + "<br>";
             displayResults();
         }
 
@@ -55,14 +61,14 @@ function displayResults() {
     console.log(document.getElementById('h1Display'));
     document.getElementById('h1Display').innerHTML =
         dispCityState +
-        dispTemp + string(varTemp) +
-        dispHum + string(varHum) +
-        dispWindDirection + string(varWindDirection) +
-        dispWindSpeed + string(varWindSpeed);
+        dispTemp + String(varTemp) +
+        dispHum + String(varHum) +
+        dispWindDirection + String(varWindDirection) +
+        dispWindSpeed + String(varWindSpeed);
 }
 
 function displayError() {
     console.log("In displayError()");
     document.getElementById('h1Display').innerHTML =
-        city + ", " + state + "is not a vaild City, State combination.  Please refresh and try again."
+        city + ", " + state + " - is not a vaild City, State combination.  Please refresh and try again."
 }
