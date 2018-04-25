@@ -1,0 +1,11 @@
+div,
+.even {
+    color: white;
+    background-color: black;
+}
+
+div,
+.odd {
+    color: white;
+    background-color: red;
+}
