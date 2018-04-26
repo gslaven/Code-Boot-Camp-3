@@ -14,37 +14,41 @@ This is here to allow for Cross origin access requests
 this shpould allowme to query info from the server
 at sured bits and  not have any problems
 */
-const proxyURL =
-    "https://cors-anywhere.herokuapp.com/";
-const requestURL =
-    "http://api.suredbits.com/nfl/v0/team/" +
-    varTeamId + "/roster";
+var { xhr, proxyURL, requestURL } = pullATLData();
 
-let xhr = new XMLHttpRequest();
-//Using Heroku to allow for CORS issues to not catch up with me
-try {
-    console.log("In Try");
-    console.log("xhr.open");
-    xhr.open('GET', proxyURL + requestURL, true);
-    console.log("xhr.send");
-    xhr.send();
-    console.log("xhr.addEventListener");
-    xhr.addEventListener("readystatechange", processRequest, false);
-    console.log("End of Try");
-} catch (error) {
-    console.log("In Catch");
-    let varErr = "The following error happened: <br>";
-    varErr = varErr + error.description;
-    console.log("varErr:" + varErr);
-    createNewDiv(varErr, 0);
-    console.log("Just Created a newDiv");
+function pullATLData() {
+    const proxyURL = "https://cors-anywhere.herokuapp.com/";
+    const requestURL = "http://api.suredbits.com/nfl/v0/team/" +
+        varTeamId + "/roster";
+    let xhr = new XMLHttpRequest();
+    //Using Heroku to allow for CORS issues to not catch up with me
+    try {
+        console.log("In JS opennig pullATLData Try");
+        console.log("xhr.open");
+        xhr.open('GET', proxyURL + requestURL, true);
+        console.log("xhr.send");
+        xhr.send();
+        console.log("xhr.addEventListener");
+        xhr.addEventListener("readystatechange", processRequest, false);
+        console.log("End JS opening pullATLData Try");
+    }
+    catch (err) {
+        console.log("In JS opening Failed Catch");
+        let varErr = "The following error happened: <br>";
+        varErr = varErr + err.description;
+        console.log("varErr:" + varErr);
+        createNewDiv(varErr, 0);
+        console.log("Just Created a newDiv");
+        console.log("End JS opening Catch");
+    }
+    return { xhr, proxyURL, requestURL };
 }
 
 function processRequest(e) {
     console.log("In processRequest");
     console.log("xhr.readyState:" + xhr.readyState);
     console.log("xhr.status:" + xhr.status);
-    console.log("xhr.responseText:" + xhr.responseText);
+    //console.log("xhr.responseText:" + xhr.responseText);
     console.log(xhr);
     try {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -62,13 +66,13 @@ function processRequest(e) {
             } else {
                 let varDispText = [];
                 let counter = 0;
-                for (elm in paramResponse) {
+                for (elm in response) {
                     console.log(elm);
-                    varDispText = varDispText +
-                        paramResponse[elm]["fullName"] + " (Jersey # - " +
-                        paramResponse[elm]["uniformNumber"] + ")<br>" +
+                    varDispText =
+                        response[elm]["fullName"] + " (Jersey # - " +
+                        response[elm]["uniformNumber"] + ")<br>" +
                         `<a href="` +
-                        paramResponse[elm]["profileUrl"] +
+                        response[elm]["profileUrl"] +
                         `">Player Profile on NFL.com</a><br>`;
                     counter++;
                     console.log(varDispText);
@@ -87,7 +91,7 @@ function processRequest(e) {
     }
 }
 
-function displayResults(paramDispTest) {
+function displayResults(paramDispTest, counter) {
     console.log("In displayResults()");
     createNewDiv(paramDispTest, counter);
     console.log("Just Created a displayResults div");
@@ -95,6 +99,7 @@ function displayResults(paramDispTest) {
 
 function displayError(paramErrorText = "") {
     console.log("In displayError()");
+    console.log("paramErrorText" + paramErrorText);
     if (paramErrorText.length === 0) {
         paramErrorText =
             "Sorry, something has gone wrong with your request at :<br><br>'" +
@@ -103,6 +108,15 @@ function displayError(paramErrorText = "") {
             "Most likely this is caused by a spelling error " +
             "for the team. <br><br>" +
             "Please try again!<br>";
+    } else {
+        paramErrorText = paramErrorText + "<br>" +
+            "Sorry, something has gone wrong with your request at :<br><br>'" +
+            proxyURL + "<br>" + requestURL + "'. <br><br>" +
+            "Please check the URL and the spelling in it!<br>" +
+            "Most likely this is caused by a spelling error " +
+            "for the team. <br><br>" +
+            "Please try again!<br>";
+
     }
     createNewDiv(paramErrorText, 0);
 }
@@ -119,6 +133,16 @@ function displayMajorError(paramXHRError) {
             "Most likely this is caused by a spelling error " +
             "for the team. <br><br>" +
             "Please try again!<br>";
+
+    } else {
+        paramXHRError = paramXHRError + "<br>" +
+            "Sorry, something has gone wrong with your request at :<br><br>'" +
+            proxyURL + "<br>" + requestURL + "'. <br><br>" +
+            "Please check the URL and the spelling in it!<br>" +
+            "Most likely this is caused by a spelling error " +
+            "for the team. <br><br>" +
+            "Please try again!<br>";
+
     }
     console.log("paramXHRError: " + paramXHRError);
     createNewDiv(paramXHRError, 0);
