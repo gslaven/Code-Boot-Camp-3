@@ -22,8 +22,8 @@ export default class NavBar extends React.Component {
                     <li key={`listItem${index}`}>
                         <NavLink to={`/${varNavLink.PageName}`}
                             activeClassName="selected"
-                            className="navBarItem"
-                            key={`navBarItem${index}`}>
+                            className="NavBarItem"
+                            key={`NavBarItem${varNavLink.PageName}`}>
                             {varNavLink.PageName}
                         </NavLink>
                     </li>

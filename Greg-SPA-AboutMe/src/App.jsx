@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group'
 
 import './App.css';
@@ -7,12 +7,23 @@ import './App.css';
 import logo from './logo.svg';
 import NavBar from './NavBar.jsx';
 
-const styles = {
-    animatedElement: {
-        position: 'fixed'
-    }
+// const styles = {
+//     animatedElement: {
+//         position: 'fixed'
+//     }
+// }
+
+const duration = 300;
+const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opactity: 0,
 }
-const Home = () => (
+const transitionStyles = {
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+};
+
+const Home = ({ in: inProp }) => (
     <div>
         <h1 id="gregsH1">Greg Slavens ... some background</h1>
         <blockquote id="blqMyInfo" className="quotez">
@@ -40,7 +51,16 @@ const Contact = () => (
     </div >
 );
 
-const App = () => {
+const UnknownUrl = () => (
+    <div>
+        <h1>Sorry for the inconvenience., but it appears that you have been
+            routed to an invalid link.  We have been alerted to this fact,
+            and we will be working on fixing the issue.</h1>
+        <a href="/Home">Greg Slavens Home page</a>
+    </div >
+);
+
+const App = ({ in: inProp }) => {
     return (
         <div id="root" className="App">
             <header className="App-header">
@@ -48,21 +68,27 @@ const App = () => {
                 <NavBar />
             </header>
             <Router>
-                <div>
-                    <TransitionGroup>
-                        <Transition
-                            timeout={1000}
-                            onEnter={el => console.log('enter', el)}
-                            onExit={el => console.log('exit', el)}
-                        >
-                            <section style={styles.animatedElement}>
-                                <Route exact path="/" component={Home} />
-                                <Route exact path="/Home" component={Home} />
-                                <Route exact path="/Contact" component={Contact} />
-                            </section>
-                        </Transition>
-                    </TransitionGroup>
-                </div>
+                <TransitionGroup>
+                    <Transition in={inProp}
+                        timeout={duration}
+                        onEnter={el => console.log('enter', el)}
+                        onExit={el => console.log('exit', el)}
+                    >
+                        {(state) => (
+                            <div style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                            }}>
+                                <Switch>
+                                    <Route exact path="/" component={Home} />
+                                    <Route path="/Home" component={Home} />
+                                    <Route path="/Contact" component={Contact} />
+                                    <Route component={UnknownUrl} />
+                                </Switch>
+                            </div>
+                        )}
+                    </Transition>
+                </TransitionGroup>
             </Router>
             <p className="App-intro">
             </p >
@@ -73,20 +99,20 @@ const App = () => {
 export default App;
 
 
-/*
+    /*
 <Route path='/' component={App}>
-<IndexRoute exact path="/home" component={Home} />
-<Route path='contact' component={Contact} />
-<Route path='*' component={Home} />
-</Route>
+            <IndexRoute exact path="/home" component={Home} />
+            <Route path='contact' component={Contact} />
+            <Route path='*' component={Home} />
+        </Route>
 
-import {Switch, Route } from 'react-router'
-
+        import {Switch, Route } from 'react-router'
+        
 <Switch>
-<Route exact path="/" component={Home} />
-<Route path="/about" component={About} />
-<Route path="/:user" component={User} />
-<Route component={NoMatch} />
-</Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/:user" component={User} />
+            <Route component={NoMatch} />
+        </Switch>
 
-*/
+        */

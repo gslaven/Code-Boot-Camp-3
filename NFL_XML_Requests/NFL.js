@@ -68,7 +68,7 @@ function processRequest(e) {
                 let counter = 0;
                 for (elm in response) {
                     console.log(elm);
-                    varDispText =
+                    varDispText = 
                         response[elm]["fullName"] + " (Jersey # - " +
                         response[elm]["uniformNumber"] + ")<br>" +
                         `<a href="` +

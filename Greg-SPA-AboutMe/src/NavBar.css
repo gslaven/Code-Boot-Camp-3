@@ -16,19 +16,18 @@
 
 .NavBar a {
     color: Purple;
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
     font-size: 20px;
     text-align: center;
     font-variant: small-caps;
 }
 
-.NavBarItem a:hover {
-    background-color: Black;
+.NavBar a:hover {
+    background-color: PaleGreen;
     color: Black;
-    font-family: Georgia;
 }
 
-.NavBar a.active {
+.NavBar a.selected {
     background-color: PaleGreen;
     color: Black;
 }
