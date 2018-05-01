@@ -23,7 +23,7 @@ const transitionStyles = {
     entered: { opacity: 1 },
 };
 
-const Home = ({ in: inProp }) => (
+const Home = () => (
     <div>
         <h1 id="gregsH1">Greg Slavens ... some background</h1>
         <blockquote id="blqMyInfo" className="quotez">

@@ -8,8 +8,8 @@ export default class NavBar extends React.Component {
         super();
         this.state = {
             Pages: [
-                { PageName: `Home` },
-                { PageName: `Contact` }
+                { 'PageName' : `Home` },
+                { 'PageName' : `Contact` }
             ],
             activeIndex: 0
         }
@@ -18,6 +18,7 @@ export default class NavBar extends React.Component {
     render() {
         let NavLinks =
             this.state.Pages.map(function (varNavLink, index) {
+                console.log(varNavLink);
                 return (
                     <li key={`listItem${index}`}>
                         <NavLink to={`/${varNavLink.PageName}`}
