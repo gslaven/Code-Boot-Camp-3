@@ -4,14 +4,7 @@ import { Transition, TransitionGroup } from 'react-transition-group'
 
 import './App.css';
 
-import logo from './logo.svg';
 import NavBar from './NavBar.jsx';
-
-// const styles = {
-//     animatedElement: {
-//         position: 'fixed'
-//     }
-// }
 
 const duration = 300;
 const defaultStyle = {
@@ -23,8 +16,8 @@ const transitionStyles = {
     entered: { opacity: 1 },
 };
 
-const Home = () => (
-    <div>
+ const Home = (props) => (
+    <div location={props.location}>
         <h1 id="gregsH1">Greg Slavens ... some background</h1>
         <blockquote id="blqMyInfo" className="quotez">
             "I was born a poor bla... wait a minute, I think that's
@@ -44,15 +37,15 @@ const Home = () => (
     </div >
 );
 
-const Contact = () => (
-    <div>
+const Contact = (props) => (
+    <div location={props.location}>
         <h1>Feel free to email me anytime:</h1>
         <a href="mailto:gslaven@comcast.net">gslaven@comcast.net</a>
     </div >
 );
 
-const UnknownUrl = () => (
-    <div>
+const UnknownUrl = (props) => (
+    <div location={props.location}>
         <h1>Sorry for the inconvenience., but it appears that you have been
             routed to an invalid link.  We have been alerted to this fact,
             and we will be working on fixing the issue.</h1>
@@ -64,7 +57,6 @@ const App = ({ in: inProp }) => {
     return (
         <div id="root" className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 <NavBar />
             </header>
             <Router>
