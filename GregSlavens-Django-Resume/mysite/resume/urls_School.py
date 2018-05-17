@@ -20,11 +20,8 @@ from . import views
 urlpatterns = [
     # ex: /Resume/
     path('', views.index, name='index'),
-    re_path(r'^(?i)address/', include('resume.urls_Address')), 
-    re_path(r'^(?i)company/', include('resume.urls_Company')),
-    re_path(r'^(?i)job/', include('resume.urls_Job')),
-    re_path(r'^(?i)phone/', include('resume.urls_Phone')),
-    re_path(r'^(?i)reference/', include('resume.urls_Reference')),
-    re_path(r'^(?i)school/', include('resume.urls_School')),
-    re_path(r'^(?i)skill/', include('resume.urls_Skill')),
+    path('<int:param_id>/', views.detail, name='detail'),
+    # Singlets of each type (ie: company 1)
+    re_path(r'^(?i)address/<int:param_id>/', views.detail, name='detail'),
+    re_path(r'^(?i)phone/<int:param_id>/detail', views.detail, name='detail'),
 ]
