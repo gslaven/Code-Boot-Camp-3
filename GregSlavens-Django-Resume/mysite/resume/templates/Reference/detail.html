@@ -1,0 +1,16 @@
+<h1>{{reference.desc}}</h1>
+    <ul>
+        <li>
+            Company: {{ reference.company }} <br> 
+            Start Date: {{ reference.start }} <br> 
+            End Date: {{ reference.end }} <br> 
+            Skills: {% if reference.skill %}
+                        {% for s in reference.skill.all %}
+                            <a href="../../skill/{{ s.id }}/">{{ s.skill }}</a>
+                        {% endfor %}
+                    {% else %}
+                        No REFERENCES associated.
+                    {% endif %}
+            
+        </li>
+    </ul>

@@ -1,0 +1,19 @@
+<h1>Skills</h1>
+{% if latest %}
+    <ul>
+    {% for skill in latest %}
+        <li><a href="{{ job.id }}/">
+            Description: {{ skill.skill }} </a><br> 
+            Company: {% if job.skill %}
+                        {% for s in job.skill.all %}
+                            <a href="../skill/{{ s.id }}/"><li>{{ s.skill }}</li></a>
+                        {% endfor %}
+                    {% else %}
+                        No COMPANIES associated.
+                    {% endif %}
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No JOBS are available.</p>
+{% endif %}

@@ -1,0 +1,22 @@
+<h1>Jobs</h1>
+{% if latest %}
+    <ul>
+    {% for job in latest %}
+        <li><a href="{{ job.id }}/">
+            Description: {{ job.desc }} </a><br> 
+            Company: {{ job.company }} <br> 
+            Start Date: {{ job.start }} <br> 
+            End Date: {{ job.end }} <br> 
+            Skills: {% if job.skill %}
+                        {% for s in job.skill.all %}
+                            <a href="../skill/{{ s.id }}/"><li>{{ s.skill }}</li></a>
+                        {% endfor %}
+                    {% else %}
+                        No SKILLS associated for this job.
+                    {% endif %}
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No JOBS are available.</p>
+{% endif %}
