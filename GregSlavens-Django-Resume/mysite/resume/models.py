@@ -108,8 +108,7 @@ class School(models.Model):
 
     def __str__(self):
         return self.name
-
-
+    
     class Meta:
         unique_together = ('name', 'degree', 'major')
 
@@ -126,7 +125,7 @@ class Relation(models.Model):
 
 class Reference(models.Model):
     name = models.CharField(max_length=256)
-    relation = models.ForeignKey(Relation, on_delete=models.CASCADE)
+    relation = models.ForeignKey(Relation, on_delete=models.CASCADE, blank=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True)
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE, blank=True)
     email = models.EmailField(max_length=256, blank=True)
@@ -136,7 +135,7 @@ class Reference(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.name + ' from ' + self.company
+        return self.name + ' from ' + self.company.name
 
 
     class Meta:
