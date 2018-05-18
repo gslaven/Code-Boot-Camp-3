@@ -1,23 +1,26 @@
-<script>console.log("{{latest}}")</script>
+<script>
+    console.log("{{latest}}")
+</script>
 <h1>Jobs</h1>
 {% if latest %}
-    <ul>
+<ul>
     {% for job in latest %}
-        <li>
-            Description:<a href="{{ job.id }}/">{{ job.desc }} </a><br> 
-            Company: <a href="../company/{{ job.company.id }}/">{{ job.company }} </a><br> 
-            Start Date: {{ job.start }} <br> 
-            End Date: {{ job.end }} <br> 
-            Skills: {% if job.skill %}
-                        {% for s in job.skill.all %}
-                            <a href="../skill/{{ s.id }}/"><li>{{ s.name }}</li></a>
-                        {% endfor %}
-                    {% else %}
-                        No SKILLS associated for this job.
-                    {% endif %}
-            </li>
+    <li>
+        Title:
+        <a href="{{ job.id }}/">{{ job.title }} </a>
+        <br> Description: {{ job.desc }}
+        <br> Company:
+        <a href="../company/{{ job.company.id }}/">{{ job.company }} </a>
+        <br> Start Date: {{ job.start }}
+        <br> End Date: {{ job.end }}
+        <br> Skills: {% if job.skill %} {% for s in job.skill.all %}
+        <a href="../skill/{{ s.id }}/">
+            <li>{{ s.name }}</li>
+        </a>
+        {% endfor %} {% else %} No SKILLS associated for this job. {% endif %}
+    </li>
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No JOBS are available.</p>
+<p>No JOBS are available.</p>
 {% endif %}

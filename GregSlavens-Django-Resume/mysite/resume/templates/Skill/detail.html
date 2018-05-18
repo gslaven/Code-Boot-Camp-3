@@ -2,15 +2,11 @@
     console.log("{{ detailObj.all }}")
 </script>
 <h1>{{detailObj.name}}</h1>
-<ul>
-    <li>
-        <p>Description: {{ detailObj.desc }}</p>
-        <p>Years: {{ detailObj.years }} {{detailObj.years_modifier}} </p>
-        <p>Jobs: {% if detailObj.job %} {% for j in detailObj.job.all %}
-            <a href="../job/{{ j.id }}/">
-                <li>{{ j.title }}</li>
-            </a>
-            {% endfor %} {% else %} No JOBS associated. {% endif %}
-        </p>
-    </li>
-</ul>
+<p>Description: {{ detailObj.desc }}</p>
+<p>Years: {{ detailObj.years }} {{detailObj.years_modifier}} </p>
+<p>Jobs: {% if detailObj.job2skill %} {% for j in detailObj.job2skill.all %}
+    <a href="../../job/{{ j.id }}/">
+        <p>{{ j.title }}</p>
+    </a>
+    {% endfor %} {% else %} No JOBS associated. {% endif %}
+</p>

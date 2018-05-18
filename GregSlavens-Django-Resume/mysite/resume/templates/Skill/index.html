@@ -14,15 +14,17 @@
         </h2>
         <script>
             console.log("{{ sk.job.all }}")
-        </script>Years: {{ sk.years }} {{sk.years_modifier}}
-        <p>Jobs: {% if sk.job %} {% for j in sk.job.all %}
+        </script>
+
+        Years: {{ sk.years }} {{sk.years_modifier}}
+        <p>Jobs: {% if sk.job2skill %} {% for j in sk.job2skill.all %}
             <a href="../job/{{ j.id }}/">
-                <li>{{ j.title }}</li>
+                <p>{{ j.title }}</p>
             </a>
             {% endfor %} {% else %} No JOBS associated. {% endif %}
         </p>
+        {% endfor %}
     </li>
-    {% endfor %}
 </ul>
 {% else %}
 <p>No SKILLS are available.</p>

@@ -68,7 +68,7 @@ class Job(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     start = models.DateField()
     end = models.DateField()
-    skill = models.ManyToManyField(Skill, blank=True)
+    skill = models.ManyToManyField(Skill, blank=True, related_name='job2skill')
     updated_at = AutoDateTimeField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
 
