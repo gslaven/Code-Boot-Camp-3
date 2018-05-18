@@ -1,22 +1,29 @@
-<script>console.log("{{ latest }}")</script>
+<script>
+    console.log("{{ latest }}")
+</script>
 <h1>Skills</h1>
 {% if latest %}
-    <ul>
+<ul>
     {% for sk in latest %}
-    <script>console.log("{{ sk }}")</script>
-    <li><a href="{{ sk.id }}/">
-        Desc: {{ sk.years }} {{sk.years_modifier}} </a><br> 
-        Years: {{ sk.years }} {{sk.years_modifier}} </a><br> 
-        Jobs: {% if sk.job %}
-                        {% for j in sk.job.all %}
-                            <a href="../job/{{ j.id }}/"><li>{{ j.desc }}</li></a>
-                        {% endfor %}
-                    {% else %}
-                        No JOBS associated.
-                    {% endif %}
-                </li>
+    <script>
+        console.log("{{ sk }}")
+    </script>
+    <li>
+        <h2>
+            <a href="{{ sk.id }}/">{{ sk.name }}</a>
+        </h2>
+        <script>
+            console.log("{{ sk.job.all }}")
+        </script>Years: {{ sk.years }} {{sk.years_modifier}}
+        <p>Jobs: {% if sk.job %} {% for j in sk.job.all %}
+            <a href="../job/{{ j.id }}/">
+                <li>{{ j.title }}</li>
+            </a>
+            {% endfor %} {% else %} No JOBS associated. {% endif %}
+        </p>
+    </li>
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No JOBS are available.</p>
+<p>No SKILLS are available.</p>
 {% endif %}

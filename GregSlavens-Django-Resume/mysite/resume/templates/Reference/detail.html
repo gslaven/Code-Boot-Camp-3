@@ -1,16 +1,18 @@
-<h1>{{reference.desc}}</h1>
-    <ul>
-        <li>
-            Company: {{ reference.company }} <br> 
-            Start Date: {{ reference.start }} <br> 
-            End Date: {{ reference.end }} <br> 
-            Skills: {% if reference.skill %}
-                        {% for s in reference.skill.all %}
-                            <a href="../../skill/{{ s.id }}/">{{ s.desc }}</a>
-                        {% endfor %}
-                    {% else %}
-                        No REFERENCES associated.
-                    {% endif %}
-            
-        </li>
-    </ul>
+<script>
+        console.log("{{ detailObj.all }}")
+    </script>
+    <h1>{{detailObj.name}}</h1>
+    <p>Relationship: {{ detailObj.relation }}</p>
+    <p>Address: {{ detailObj.address }}</p>
+    <p>Phone: {{ detailObj.phone }}</p>
+    <p> E-Mail:
+        <a href="mailto:{{ detailObj.email }}">
+            {{ detailObj.email }}
+        </a>
+    </p>
+    <p> Website:
+        <a href="{{ detailObj.website }}/">
+            {{ detailObj.website }}
+        </a>
+    </p>
+    

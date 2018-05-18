@@ -1,16 +1,16 @@
-<h1>{{skill.desc}}</h1>
-    <ul>
-        <li>
-            Company: {{ skill.company }} <br> 
-            Start Date: {{ skill.start }} <br> 
-            End Date: {{ skill.end }} <br> 
-            Skills: {% if skill.desc %}
-                        {% for s in skill.desc.all %}
-                            <a href="../../skill/{{ s.id }}/">{{ s.desc }}</a>
-                        {% endfor %}
-                    {% else %}
-                        No SKILLS associated.
-                    {% endif %}
-            
-        </li>
-    </ul>
+<script>
+    console.log("{{ detailObj.all }}")
+</script>
+<h1>{{detailObj.name}}</h1>
+<ul>
+    <li>
+        <p>Description: {{ detailObj.desc }}</p>
+        <p>Years: {{ detailObj.years }} {{detailObj.years_modifier}} </p>
+        <p>Jobs: {% if detailObj.job %} {% for j in detailObj.job.all %}
+            <a href="../job/{{ j.id }}/">
+                <li>{{ j.title }}</li>
+            </a>
+            {% endfor %} {% else %} No JOBS associated. {% endif %}
+        </p>
+    </li>
+</ul>

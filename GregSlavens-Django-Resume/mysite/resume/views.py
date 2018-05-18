@@ -18,6 +18,9 @@ def varDataObject(param_request_path):
     elif varPathString.lower() == "job":
         # Check to see if this is a JOB request
         zReturnVal = Job
+    elif varPathString.lower() == "company":
+        # Check to see if this is a JOB request
+        zReturnVal = Company
     else:
         # Ref failed, so make this a skill
         zReturnVal = Skill

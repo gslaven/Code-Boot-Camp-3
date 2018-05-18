@@ -1,0 +1,24 @@
+<script>
+    console.log("{{latest}}")
+</script>
+<h1>Companies</h1>
+{% if latest %}
+<ul>
+    {% for comp in latest %}
+    <li>
+        Company:
+        <a href="{{ comp.id }}/">{{ comp.name }} </a>
+        <p>Description: {{ comp.desc }}</p>
+        <PAddress: {{ comp.address }} <p>Phone: {{ comp.phone }}</p>
+            <p> E-Mail:
+                <a href="mailto:{{ comp.email }}">{{ comp.email }} </a>
+            </p>
+            <p> Website:
+                <a href="{{ comp.website }}/">{{ comp.website }} </a>
+            </p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No COMPANIES are available.</p>
+{% endif %}
