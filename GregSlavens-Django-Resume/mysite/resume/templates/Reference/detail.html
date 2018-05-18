@@ -6,7 +6,7 @@
             End Date: {{ reference.end }} <br> 
             Skills: {% if reference.skill %}
                         {% for s in reference.skill.all %}
-                            <a href="../../skill/{{ s.id }}/">{{ s.skill }}</a>
+                            <a href="../../skill/{{ s.id }}/">{{ s.desc }}</a>
                         {% endfor %}
                     {% else %}
                         No REFERENCES associated.

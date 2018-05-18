@@ -1,3 +1,4 @@
+<script>console.log("{{latest}}")</script>
 <h1>References</h1>
 {% if latest %}
     <ul>
@@ -9,7 +10,7 @@
             End Date: {{ reference.end }} <br> 
             Skills: {% if reference.skill %}
                         {% for s in reference.skill.all %}
-                            <a href="../skill/{{ s.id }}/"><li>{{ s.skill }}</li></a>
+                            <a href="../skill/{{ s.id }}/"><li>{{ s.desc }}</li></a>
                         {% endfor %}
                     {% else %}
                         No SKILLS associated.

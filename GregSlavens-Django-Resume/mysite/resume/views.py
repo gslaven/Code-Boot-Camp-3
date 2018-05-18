@@ -12,28 +12,30 @@ from .models import Skill
 
 def varDataObject(param_request_path):
     varPathString = templateFolder(param_request_path)
-    zReturnVal = Job
-    if varPathString.lower() == "reference" :
+    if varPathString.lower() == "reference":
         # Check to see if this is a REFERENCE request
         zReturnVal = Reference
+    elif varPathString.lower() == "job":
+        # Check to see if this is a JOB request
+        zReturnVal = Job
     else:
         # Ref failed, so make this a skill
         zReturnVal = Skill
     return zReturnVal
-    
-    
+
+
 def templateFolder(param_request_path):
     varPathArray = param_request_path.lower().split('/')
     zReturnVal = varPathArray[3]
     return zReturnVal
-    
-    
+
+
 def index(request):
     latest = varDataObject(request.path).objects.order_by('-created_at')[:5]
     context = {'latest': latest, }
     return render(request,
-                  templateFolder(request.path) + '/index.html',
-                  context)
+                    templateFolder(request.path) + '/index.html',
+                    context)
 
 
 def detail(request, param_id):

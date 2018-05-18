@@ -6,7 +6,7 @@
             End Date: {{ job.end }} <br> 
             Skills: {% if job.skill %}
                         {% for s in job.skill.all %}
-                            <a href="../../skill/{{ s.id }}/">{{ s.skill }}</a>
+                            <a href="../../skill/{{ s.id }}/">{{ s.desc }}</a>
                         {% endfor %}
                     {% else %}
                         No SKILLS associated.

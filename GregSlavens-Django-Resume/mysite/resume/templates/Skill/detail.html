@@ -4,9 +4,9 @@
             Company: {{ skill.company }} <br> 
             Start Date: {{ skill.start }} <br> 
             End Date: {{ skill.end }} <br> 
-            Skills: {% if skill.skill %}
-                        {% for s in skill.skill.all %}
-                            <a href="../../skill/{{ s.id }}/">{{ s.skill }}</a>
+            Skills: {% if skill.desc %}
+                        {% for s in skill.desc.all %}
+                            <a href="../../skill/{{ s.id }}/">{{ s.desc }}</a>
                         {% endfor %}
                     {% else %}
                         No SKILLS associated.
