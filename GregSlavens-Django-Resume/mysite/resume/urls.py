@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import include, path, re_path
 
 from . import views
+
 urlpatterns = [
     # ex: /Resume/
     path('', views.index, name='index'),

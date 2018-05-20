@@ -4,14 +4,14 @@
 <script>
     console.log("{{ latest }}")
 </script>
-<h1>Skills</h1>
+<h1>Greg Slavens - Resume</h1>
 {% if latest %}
 <ul>
     {% for sk in latest %}
     <script>
         console.log("{{ sk }}")
     </script>
-    <li>
+    <li class="GregsListItem">
         <h2>
             <a href="{{ sk.id }}/">{{ sk.name }}</a>
         </h2>

@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
+
 from .models import Address
 from .models import Company
 from .models import Job
@@ -30,6 +31,10 @@ def varDataObject(param_request_path):
 def templateFolder(param_request_path):
     varPathArray = param_request_path.lower().split('/')
     zReturnVal = varPathArray[3]
+    if zReturnVal == "":
+        # If the return val is blank, then this is a straight resume 
+        # request and not a part of a resume (job, comp, skill) request
+        zReturnVal = "Resume"
     return zReturnVal
 
 
@@ -37,8 +42,8 @@ def index(request):
     latest = varDataObject(request.path).objects.order_by('-created_at')[:5]
     context = {'latest': latest, }
     return render(request,
-                    templateFolder(request.path) + '/index.html',
-                    context)
+                  templateFolder(request.path) + '/index.html',
+                  context)
 
 
 def detail(request, param_id):
@@ -48,9 +53,3 @@ def detail(request, param_id):
         templateFolder(request.path) + '/detail.html',
         {'detailObj': detailObj}
     )
-
-    # return render(
-    #     request,
-    #     templateFolder(request.path),
-    #     {'job': job}
-    # )
