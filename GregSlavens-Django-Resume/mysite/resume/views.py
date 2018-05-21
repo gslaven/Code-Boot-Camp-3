@@ -9,6 +9,7 @@ from .models import Phone
 from .models import Reference
 from .models import School
 from .models import Skill
+from .models import Resume
 
 
 def varDataObject(param_request_path):
@@ -22,9 +23,12 @@ def varDataObject(param_request_path):
     elif varPathString.lower() == "company":
         # Check to see if this is a JOB request
         zReturnVal = Company
+    elif varPathString.lower() == "skill":
+        # Check to see if this is a Skill request
+        zReturnVal = SKill
     else:
-        # Ref failed, so make this a skill
-        zReturnVal = Skill
+        # Ref failed, so make this a full resume request
+        zReturnVal = Resume
     return zReturnVal
 
 
@@ -39,7 +43,7 @@ def templateFolder(param_request_path):
 
 
 def index(request):
-    latest = varDataObject(request.path).objects.order_by('-created_at')[:5]
+    latest = varDataObject(request.path).objects.order_by('-created_at')
     context = {'latest': latest, }
     return render(request,
                   templateFolder(request.path) + '/index.html',

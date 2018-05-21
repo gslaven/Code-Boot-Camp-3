@@ -1,10 +1,12 @@
 from django.db import models
 from datetime import datetime
-from django.utils  import timezone
+from django.utils import timezone
+from django.template.defaultfilters import truncatechars, truncatewords
 
 class AutoDateTimeField(models.DateTimeField):
     def pre_save(self, model_instance, add):
         return datetime.now()
+
 
 class Address(models.Model):
     street = models.CharField(max_length=128)
@@ -16,7 +18,7 @@ class Address(models.Model):
 
     def __str__(self):
         return self.street + ', ' + self.city + ', ' + self.state + ',  ' + self.zip_code
-    
+
     class Meta:
         unique_together = ('street', 'zip_code')
 
@@ -48,8 +50,8 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
-        
-        
+
+
 class Skill(models.Model):
     name = models.CharField(max_length=256, unique=True)
     desc = models.TextField(blank=True)
@@ -60,8 +62,8 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
-        
-        
+
+
 class Job(models.Model):
     title = models.CharField(max_length=256)
     desc = models.TextField(blank=True)
@@ -74,7 +76,6 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
-
 
     class Meta:
         unique_together = ('title', 'company')
@@ -108,7 +109,7 @@ class School(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         unique_together = ('name', 'degree', 'major')
 
@@ -125,7 +126,8 @@ class Relation(models.Model):
 
 class Reference(models.Model):
     name = models.CharField(max_length=256)
-    relation = models.ForeignKey(Relation, on_delete=models.CASCADE, blank=True)
+    relation = models.ForeignKey(
+        Relation, on_delete=models.CASCADE, blank=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True)
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE, blank=True)
     email = models.EmailField(max_length=256, blank=True)
@@ -137,8 +139,32 @@ class Reference(models.Model):
     def __str__(self):
         return self.name + ' from ' + self.company.name
 
-
     class Meta:
         unique_together = ('name', 'company')
+
+
+class ResumeType(models.Model):
+    name = models.CharField(unique=True, max_length=50)
+    desc = models.TextField(blank=True)
+    updated_at = AutoDateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name + ' - Desc: ' + truncatewords(self.desc, 8)
+
+
+class Resume(models.Model):
+    resume_type = models.ForeignKey(
+        ResumeType, on_delete=models.CASCADE, default=1, blank=True)
+    company = models.ManyToManyField(
+        Company, blank=True, related_name='resume2comp')
+    job = models.ManyToManyField(Job, blank=True, related_name='resume2job')
+    reference = models.ManyToManyField(
+        Reference, blank=True, related_name='resume2ref')
+    skill = models.ManyToManyField(
+        Skill, blank=True, related_name='resume2skill')
+
+    def __str__(self):
+        return self.resume_type.name + ' - Desc: ' + truncatewords(self.resume_type.desc, 8)
 
 
