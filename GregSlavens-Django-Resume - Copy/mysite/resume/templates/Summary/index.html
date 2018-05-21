@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
+<script>
+    console.log("In Skills - Index.Html - Printing varDataObject")
+    console.log("{{ varDataObject.all }}")
+</script>
+{% if varDataObject %} {% for summ in varDataObject.all %}
+<script>
+    console.log("{{ summ.name }}")
+    console.log("{{ summ }}")
+</script>
+<h3>{{ summ.name }}</h3>
+<ul>
+    <li>
+        <h4>
+            <a href="{{ summ.id }}/">{{ summ.name }}</a>
+        </h4>
+        <h5>
+            {{ summ.desc }}
+        </h5>
+        {% endfor %}
+    </li>
+</ul>
+{% else %}
+<p>No SUMMARIES are available.</p>
+{% endif %}
