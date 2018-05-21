@@ -2,23 +2,31 @@
 <link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
 <script>
-    console.log("{{latest}}")
+    console.log("{{varDataObject}}")
 </script>
-<h1>Jobs</h1>
-{% if latest %}
+<h3>Jobs</h3>
+{% if varDataObject %}
 <ul>
-    {% for job in latest %}
+    {% for job in varDataObject %}
     <li>
-        Title:
-        <a href="{{ job.id }}/">{{ job.title }} </a>
-        <br> Description: {{ job.desc }}
+        <h4>
+            <a href="{{ job.id }}/">{{ job.title }} </a>
+        </h4>
+        Description: {{ job.desc }}
+        <br> Duties: {% if job.duty %} {% for d in job.duty.all %}
+        <ul>
+            <li>{{ d.desc }}</li>
+        </ul>
+        {% endfor %} {% else %} No DUTIES associated for this job. {% endif %}
         <br> Company:
         <a href="../company/{{ job.company.id }}/">{{ job.company }} </a>
         <br> Start Date: {{ job.start }}
         <br> End Date: {{ job.end }}
         <br> Skills: {% if job.skill %} {% for s in job.skill.all %}
         <a href="../skill/{{ s.id }}/">
-            <li>{{ s.name }}</li>
+            <ul>
+                <li>{{ s.name }}</li>
+            </ul>
         </a>
         {% endfor %} {% else %} No SKILLS associated for this job. {% endif %}
     </li>

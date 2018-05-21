@@ -10,9 +10,11 @@ from .models import Reference
 from .models import School
 from .models import Skill
 from .models import Resume
+from .models import ResumeType
+from .models import Summary
 
 
-def varDataObject(param_request_path):
+def funDataObject(param_request_path):
     varPathString = templateFolder(param_request_path)
     if varPathString.lower() == "reference":
         # Check to see if this is a REFERENCE request
@@ -25,7 +27,10 @@ def varDataObject(param_request_path):
         zReturnVal = Company
     elif varPathString.lower() == "skill":
         # Check to see if this is a Skill request
-        zReturnVal = SKill
+        zReturnVal = Skill
+    elif varPathString.lower() == "summary":
+        # Check to see if this is a summary request
+        zReturnVal = Summary
     else:
         # Ref failed, so make this a full resume request
         zReturnVal = Resume
@@ -36,22 +41,22 @@ def templateFolder(param_request_path):
     varPathArray = param_request_path.lower().split('/')
     zReturnVal = varPathArray[3]
     if zReturnVal == "":
-        # If the return val is blank, then this is a straight resume 
+        # If the return val is blank, then this is a straight resume
         # request and not a part of a resume (job, comp, skill) request
         zReturnVal = "Resume"
     return zReturnVal
 
 
 def index(request):
-    latest = varDataObject(request.path).objects.order_by('-created_at')
-    context = {'latest': latest, }
+    varDataObject = funDataObject(request.path).objects
+    context = {'varDataObject': varDataObject, }
     return render(request,
                   templateFolder(request.path) + '/index.html',
                   context)
 
 
 def detail(request, param_id):
-    detailObj = get_object_or_404(varDataObject(request.path), pk=param_id)
+    detailObj = get_object_or_404(funDataObject(request.path), pk=param_id)
     return render(
         request,
         templateFolder(request.path) + '/detail.html',

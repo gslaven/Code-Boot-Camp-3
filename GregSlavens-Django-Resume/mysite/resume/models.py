@@ -3,6 +3,7 @@ from datetime import datetime
 from django.utils import timezone
 from django.template.defaultfilters import truncatechars, truncatewords
 
+
 class AutoDateTimeField(models.DateTimeField):
     def pre_save(self, model_instance, add):
         return datetime.now()
@@ -64,9 +65,19 @@ class Skill(models.Model):
         return self.name
 
 
+class Duty(models.Model):
+    desc = models.TextField(unique=True)
+    updated_at = AutoDateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return truncatewords(self.desc, 8)
+
+
 class Job(models.Model):
     title = models.CharField(max_length=256)
     desc = models.TextField(blank=True)
+    duty = models.ManyToManyField(Duty, blank=True, related_name='job2duty')
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     start = models.DateField()
     end = models.DateField()
@@ -150,7 +161,17 @@ class ResumeType(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.name + ' - Desc: ' + truncatewords(self.desc, 8)
+        return self.name + ' - ' + truncatewords(self.desc, 8)
+
+
+class Summary(models.Model):
+    name = models.TextField(unique=True)
+    desc = models.TextField(blank=True)
+    updated_at = AutoDateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name + ' - ' + truncatewords(self.desc, 8)
 
 
 class Resume(models.Model):
@@ -163,8 +184,8 @@ class Resume(models.Model):
         Reference, blank=True, related_name='resume2ref')
     skill = models.ManyToManyField(
         Skill, blank=True, related_name='resume2skill')
+    summary = models.ManyToManyField(
+        Summary, blank=True, related_name='resume2summary')
 
     def __str__(self):
-        return self.resume_type.name + ' - Desc: ' + truncatewords(self.resume_type.desc, 8)
-
-
+        return self.resume_type.name + ' - ' + truncatewords(self.resume_type.desc, 8)

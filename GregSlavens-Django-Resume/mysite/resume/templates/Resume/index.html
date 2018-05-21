@@ -2,34 +2,39 @@
 <link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
 <script>
-    console.log("{{ latest }}")
+    console.log("In Resume\Index.Html")
+    console.log("{{ varDataObject.all }}")
 </script>
-<h1>Greg Slavens - Resume</h1>
-{% if latest %}
-<h1>Resume Type - {{ latest.name</h1>
+<h1>Greg Slavens - Resumes</h1>
+{% if varDataObject %} {% for res in varDataObject.all %}
 <ul>
-    {% for sk in latest %}
     <script>
-        console.log("{{ sk }}")
+        console.log("Inside Resume Loop - Resume - {{ res.resume_type }}")
     </script>
-    <li class="GregsListItem">
-        <h2>
-            <a href="{{ sk.id }}/">{{ sk.name }}</a>
-        </h2>
-        <script>
-            console.log("{{ sk.job.all }}")
-        </script>
-
-        Years: {{ sk.years }} {{sk.years_modifier}}
-        <p>Jobs: {% if sk.job2skill %} {% for j in sk.job2skill.all %}
-            <a href="../job/{{ j.id }}/">
-                <p>{{ j.title }}</p>
-            </a>
-            {% endfor %} {% else %} No JOBS associated. {% endif %}
-        </p>
-        {% endfor %}
+    <li>
+        <h2>{{ res }}</h2>
     </li>
+    <script>
+        console.log("About to Render Summary")
+        console.log("{{ res.summary.all }}")
+    </script>
+    {% include "Summary/detail.html" with detailObj=res.summary.first %}
+    <script>
+        console.log("About to Render Skills")
+        console.log("{{ res.skill.all }}")
+    </script>
+    {% include "Skill/index.html" with varDataObject=res.skill.all %}
+    <script>
+        console.log("About to Render Jobs")
+        console.log("{{ res.job.all }}")
+    </script>
+    {% include "Job/index.html" with varDataObject=res.job.all %}
+    <script>
+        console.log("About to Render References")
+        console.log("{{ res.reference.all }}")
+    </script>
+    {% include "Reference/index.html" with varDataObject=res.reference.all %}
 </ul>
-{% else %}
-<p>No SKILLS are available.</p>
+{% endfor %} {% else %}
+<p>No RESUMES are available.</p>
 {% endif %}

@@ -9,6 +9,8 @@ from .models import Skill
 from .models import Relation
 from .models import Resume
 from .models import ResumeType
+from .models import Summary
+from .models import Duty
 
 # Register your models here.
 admin.site.register(Address)
@@ -21,3 +23,5 @@ admin.site.register(Skill)
 admin.site.register(Relation)
 admin.site.register(Resume)
 admin.site.register(ResumeType)
+admin.site.register(Summary)
+admin.site.register(Duty)

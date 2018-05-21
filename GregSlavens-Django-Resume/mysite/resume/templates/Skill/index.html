@@ -2,31 +2,33 @@
 <link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
 <script>
-    console.log("{{ latest }}")
+    console.log("In Skills - Index.Html - Printing varDataObject")
+    console.log("{{ varDataObject.all }}")
 </script>
-<h1>Skills</h1>
-{% if latest %}
+<h3>Skills</h3>
+{% if varDataObject %}
 <ul>
-    {% for sk in latest.resume_type %}
+    {% for sk in varDataObject.all %}
     <script>
         console.log("{{ sk }}")
     </script>
     <li>
-        <h2>
+        <h4>
             <a href="{{ sk.id }}/">{{ sk.name }}</a>
-        </h2>
+        </h4>
         <script>
             console.log("{{ sk.job.all }}")
         </script>
-
-        Years: {{ sk.years }} {{sk.years_modifier}}
-        <p>Jobs: {% if sk.job2skill %} {% for j in sk.job2skill.all %}
-            <a href="../job/{{ j.id }}/">
-                <p>{{ j.title }}</p>
-            </a>
-            {% endfor %} {% else %} No JOBS associated. {% endif %}
-        </p>
-        {% endfor %}
+        <h5>Years: {{ sk.years }} {{sk.years_modifier}}</h5>
+        Jobs: {% if sk.job2skill %} {% for j in sk.job2skill.all %}
+        <ul>
+            <li>
+                <a href="../job/{{ j.id }}/">
+                    {{ j.title }}
+                </a>
+            </li>
+        </ul>
+        {% endfor %} {% else %} No JOBS associated. {% endif %} {% endfor %}
     </li>
 </ul>
 {% else %}

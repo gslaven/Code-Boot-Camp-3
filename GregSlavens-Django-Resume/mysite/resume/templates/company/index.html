@@ -2,15 +2,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
 <script>
-    console.log("{{latest}}")
+    console.log("{{varDataObject}}")
 </script>
-<h1>Companies</h1>
-{% if latest %}
+<h3>Companies</h3>
+{% if varDataObject %}
 <ul>
-    {% for comp in latest %}
+    {% for comp in varDataObject %}
     <li>
         Company:
-        <a href="../company/{{comp.id }}">{{ comp.name }} </a>
+        <h4><a href="../company/{{comp.id }}">{{ comp.name }} </a></h4>
         <p>Description: {{ comp.desc }}</p>
         <p>Address: {{ comp.address }}</p>
         <p>Phone: {{ comp.phone }}</p>
