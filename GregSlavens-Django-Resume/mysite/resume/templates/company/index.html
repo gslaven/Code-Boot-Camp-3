@@ -7,7 +7,7 @@
 <h3>Companies</h3>
 {% if varDataObject %}
 <ul>
-    {% for comp in varDataObject %}
+    {% for comp in varDataObject.all %}
     <li>
         Company:
         <h4><a href="../company/{{comp.id }}">{{ comp.name }} </a></h4>

@@ -31,20 +31,28 @@ def funDataObject(param_request_path):
     elif varPathString.lower() == "summary":
         # Check to see if this is a summary request
         zReturnVal = Summary
+    elif varPathString.lower() == "resume":
+        # Check to see if this is a Resume request
+        zReturnVal = Resume
     else:
-        # Ref failed, so make this a full resume request
+        # Ref failed, so make this a resume request as a failsafe
         zReturnVal = Resume
     return zReturnVal
 
 
 def templateFolder(param_request_path):
     varPathArray = param_request_path.lower().split('/')
-    zReturnVal = varPathArray[3]
-    if zReturnVal == "":
-        # If the return val is blank, then this is a straight resume
-        # request and not a part of a resume (job, comp, skill) request
+    zReturnVal = ""
+    if varPathArray.__len__() == 3:
+        # If the varPathArray <3 (basically "blank"),
+        # then this is a straight resume.
+        # request is not a resume so makit something else (job, comp, skill) request
         zReturnVal = "Resume"
+    else:
+        # Ref failed, so make this a resume request as a failsafe
+        zReturnVal = varPathArray[3]
     return zReturnVal
+
 
 
 def index(request):

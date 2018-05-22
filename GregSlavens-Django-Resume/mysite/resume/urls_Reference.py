@@ -21,7 +21,4 @@ urlpatterns = [
     # ex: /Resume/
     path('', views.index, name='index'),
     path('<int:param_id>/', views.detail, name='detail'),
-    # Singlets of each type (ie: company 1)
-    re_path(r'^(?i)address/<int:param_id>/', views.detail, name='detail'),
-    re_path(r'^(?i)phone/<int:param_id>/detail', views.detail, name='detail'),
 ]
