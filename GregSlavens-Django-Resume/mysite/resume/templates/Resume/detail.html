@@ -5,12 +5,7 @@
     console.log("In Resume\Index.Html")
     console.log("{{ varDataObject.all }}")
 </script>
-<div class="NavBar">
-    <div>
-        <img src="{% static 'resume/logo.svg' %}" class="App-logo" alt="logo" />
-    </div>
-    <h1>Greg Slavens - Resumes</h1>
-</div>
+<h1>Greg Slavens - Resumes</h1>
 {% if varDataObject %} {% for res in varDataObject.all %}
 <ul>
     <script>
@@ -43,3 +38,14 @@
 {% endfor %} {% else %}
 <p>No RESUMES are available.</p>
 {% endif %}
+
+
+<h3>{{detailObj.title}}</h3>
+<p>Company: {{ detailObj.company }} </p>
+<p>Start Date: {{ detailObj.start }} </p>
+<p>End Date: {{ detailObj.end }} </p>
+<p>Skills: {% if detailObj.skill %} {% for s in detailObj.skill.all %}
+    <p>
+        <a href="../../skill/{{ s.id }}/">{{ s.name }}</a>
+    </p>
+    {% endfor %} {% else %} No SKILLS associated. {% endif %}

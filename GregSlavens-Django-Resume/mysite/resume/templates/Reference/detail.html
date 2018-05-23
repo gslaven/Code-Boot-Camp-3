@@ -1,18 +1,20 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
 <script>
-        console.log("{{ detailObj.all }}")
-    </script>
-    <h3>{{detailObj.name}}</h3>
-    <p>Relationship: {{ detailObj.relation }}</p>
-    <p>Address: {{ detailObj.address }}</p>
-    <p>Phone: {{ detailObj.phone }}</p>
-    <p> E-Mail:
-        <a href="mailto:{{ detailObj.email }}">
-            {{ detailObj.email }}
-        </a>
-    </p>
-    <p> Website:
-        <a href="{{ detailObj.website }}/">
-            {{ detailObj.website }}
-        </a>
-    </p>
-    
+    console.log("{{ detailObj.all }}")
+</script>
+<h3>{{detailObj.name}}</h3>
+<p>Relationship: {{ detailObj.relation }}</p>
+<p>Address: {{ detailObj.address }}</p>
+<p>Phone: {{ detailObj.phone }}</p>
+<p> E-Mail:
+    <a href="mailto:{{ detailObj.email }}">
+        {{ detailObj.email }}
+    </a>
+</p>
+<p> Website:
+    <a href="{{ detailObj.website }}/">
+        {{ detailObj.website }}
+    </a>
+</p>

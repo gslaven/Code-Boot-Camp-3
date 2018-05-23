@@ -174,9 +174,25 @@ class Summary(models.Model):
         return self.name + ' - ' + truncatewords(self.desc, 8)
 
 
+class ResumeOwner(models.Model):
+    name = models.CharField(max_length=256)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True)
+    phone = models.ForeignKey(Phone, on_delete=models.CASCADE, blank=True)
+    email = models.EmailField(max_length=256, blank=True)
+    website = models.CharField(max_length=256, blank=True)
+    linked_in = models.CharField(max_length=256, blank=True)
+    updated_at = AutoDateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
+
+
 class Resume(models.Model):
     resume_type = models.ForeignKey(
         ResumeType, on_delete=models.CASCADE, default=1, blank=True)
+    resumeowner = models.ForeignKey(
+        ResumeOwner, on_delete=models.CASCADE, blank=True)
     company = models.ManyToManyField(
         Company, blank=True, related_name='resume2comp')
     job = models.ManyToManyField(Job, blank=True, related_name='resume2job')

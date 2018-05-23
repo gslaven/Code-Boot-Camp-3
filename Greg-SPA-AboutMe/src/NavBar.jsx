@@ -10,7 +10,8 @@ export default class NavBar extends React.Component {
         this.state = {
             Pages: [
                 { 'PageName': `Home` },
-                { 'PageName': `Contact` }
+                { 'PageName': `Contact` },
+                { 'PageName': `Whatever` },
             ],
             activeIndex: 0
         }

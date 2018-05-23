@@ -44,15 +44,20 @@ def templateFolder(param_request_path):
     varPathArray = param_request_path.lower().split('/')
     zReturnVal = ""
     if varPathArray.__len__() == 3:
-        # If the varPathArray <3 (basically "blank"),
+        # If the varPathArray = 3 (basically "blank"),
         # then this is a straight resume.
-        # request is not a resume so makit something else (job, comp, skill) request
-        zReturnVal = "Resume"
+        # request is not a resume so make it something else (job, comp, skill) request
+        zReturnVal = "resume"
+    elif varPathArray.__len__() == 4:
+        # Check to see if this is a JOB request
+        if varPathArray[3] == "":
+            # THIS IS A BLANK REQUEST SO ADD THE
+            # RESUME TO IT FOR A DEFAULT
+            zReturnVal = "resume"
     else:
         # Ref failed, so make this a resume request as a failsafe
         zReturnVal = varPathArray[3]
     return zReturnVal
-
 
 
 def index(request):
