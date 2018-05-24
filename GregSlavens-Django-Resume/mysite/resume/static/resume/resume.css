@@ -1,0 +1,99 @@
+/* This just lays out what colors I am choosing to make the website, 
+   so I don't have to look all over to find them while developing. */
+
+:Color_Pallette {
+  color: black;
+  color: #666;
+  color: #143041;
+  color: #223e4d;
+  color: #447e9b;
+  color: #417690;
+  color: #79aec8;
+  color: #f5dd5d;
+  color: #eea;
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 80px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+li {
+  text-align: left;
+  background-color: #eaeaea;
+}
+
+h1,
+h3 {
+  color: #eea;
+  background-color: #223e4d;
+}
+
+h2,
+h4 {
+  color: #f5dd5d;
+  background-color: #79aec8;
+}
+
+.NavBar {
+  display: flex;
+  overflow: hidden;
+  background-color: #143041;
+  font-family: Arial;
+  color: #f5dd5d;
+  font-size: 20px;
+  text-align: center;
+  font-variant: small-caps;
+  padding: 10px 10px 10px 10px;
+}
+
+.NavBarSpan {
+  color: #666;
+  margin: 0px, 0px, 0px, 5px;
+}
+
+.NavBar a {
+  color: Purple;
+  /* padding: 10px 10px; */
+  font-size: 20px;
+  text-align: left;
+  font-variant: small-caps;
+}
+
+.NavBar a:hover {
+  background-color: PaleGreen;
+  color: Black;
+}
+
+.NavBar a.selected {
+  background-color: PaleGreen;
+  color: Black;
+}
+
+.GregsColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

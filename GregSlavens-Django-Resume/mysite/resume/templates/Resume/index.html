@@ -1,6 +1,6 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'resume/App.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'resume/NavBar.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
+
 <script>
     console.log("In Resume\Index.Html")
     console.log("{{ varDataObject.all }}")
@@ -9,7 +9,7 @@
     <div>
         <img src="{% static 'resume/logo.svg' %}" class="App-logo" alt="logo" />
     </div>
-    <h1>Greg Slavens - Resumes</h1>
+    <h1>Greg Slavens - <span class="NavBarSpan">Resumes</span></h1>
 </div>
 {% if varDataObject %} {% for res in varDataObject.all %}
 <ul>
