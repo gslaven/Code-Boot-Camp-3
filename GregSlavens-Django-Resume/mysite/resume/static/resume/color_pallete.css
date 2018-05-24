@@ -1,0 +1,22 @@
+/* This just lays out what colors I am choosing to make the website, 
+   so I don't have to look all over to find them while developing. */
+
+:root {
+  --darkest: black;
+  --lightest: #fcf8e3;
+  --row-dark: #999;
+  --row-semi-dark: #ccc;
+  --row-semi-light: #ddd;
+  --row-light: #eaeaea;
+  --bg-and-text-dark: #23404e;
+  --bg-and-text-semi-dark: #345d72;
+  --bg-and-text-semi-light: #4e8aa8;
+  --bg-and-text-light: #68b2d6;
+  --text-over-bg-dark: #fada25;
+  --text-over-bg-semi-dark: #fae25b;
+  --text-over-bg-semi-light: #faea8e;
+  --text-over-bg-light: #fdf4bf;
+  --main-padding: 1em 1.5em 2em 1.5em;
+  --list-padding: 1px 1.75px 2px 1.75px;
+  --header-padding: 5px 7.5px 10px 7.5px;
+}

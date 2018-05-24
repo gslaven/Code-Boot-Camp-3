@@ -175,23 +175,29 @@ class Summary(models.Model):
 
 
 class ResumeOwner(models.Model):
-    name = models.CharField(max_length=256)
+    first_name = models.CharField(max_length=256)
+    last_name = models.CharField(max_length=256)
+    name_web_display = models.CharField(max_length=256)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True)
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE, blank=True)
     email = models.EmailField(max_length=256, blank=True)
     website = models.CharField(max_length=256, blank=True)
+    github = models.CharField(max_length=256, blank=True)
     linked_in = models.CharField(max_length=256, blank=True)
+    facebook = models.CharField(max_length=256, blank=True)
+    social_media_1 = models.CharField(max_length=256, blank=True)
+    social_media_2 = models.CharField(max_length=256, blank=True)
     updated_at = AutoDateTimeField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.name
+        return self.name_web_display
 
 
 class Resume(models.Model):
     resume_type = models.ForeignKey(
         ResumeType, on_delete=models.CASCADE, default=1, blank=True)
-    resumeowner = models.ForeignKey(
+    resume_owner = models.ForeignKey(
         ResumeOwner, on_delete=models.CASCADE, blank=True)
     company = models.ManyToManyField(
         Company, blank=True, related_name='resume2comp')

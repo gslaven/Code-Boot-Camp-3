@@ -5,41 +5,45 @@
     console.log("In Resume\Index.Html")
     console.log("{{ varDataObject.all }}")
 </script>
+{% if varDataObject %} {% for res in varDataObject.all %}
 <div class="NavBar">
     <div>
         <img src="{% static 'resume/logo.svg' %}" class="App-logo" alt="logo" />
     </div>
-    <h1>Greg Slavens - <span class="NavBarSpan">Resumes</span></h1>
+    <h1>{{ res.resume_owner.name_web_display }} -
+        <span class="NavBarSpan">Resumes</span>
+    </h1>
 </div>
-{% if varDataObject %} {% for res in varDataObject.all %}
-<ul>
-    <script>
-        console.log("Inside Resume Loop - Resume - {{ res.resume_type }}")
-    </script>
-    <li>
-        <h2>{{ res }}</h2>
-    </li>
-    <script>
-        console.log("About to Render Summary")
-        console.log("{{ res.summary.all }}")
-    </script>
-    {% include "Summary/detail.html" with detailObj=res.summary.first %}
-    <script>
-        console.log("About to Render Skills")
-        console.log("{{ res.skill.all }}")
-    </script>
-    {% include "Skill/index.html" with varDataObject=res.skill.all %}
-    <script>
-        console.log("About to Render Jobs")
-        console.log("{{ res.job.all }}")
-    </script>
-    {% include "Job/index.html" with varDataObject=res.job.all %}
-    <script>
-        console.log("About to Render References")
-        console.log("{{ res.reference.all }}")
-    </script>
-    {% include "Reference/index.html" with varDataObject=res.reference.all %}
-</ul>
+<div class="UL_BG_Color">
+    <ul>
+        <script>
+            console.log("Inside Resume Loop - Resume - {{ res.resume_type }}")
+        </script>
+        <li>
+            <h2>{{ res }}</h2>
+            <script>
+                console.log("About to Render Summary")
+                console.log("{{ res.summary.all }}")
+            </script>
+            {% include "Summary/detail.html" with detailObj=res.summary.first %}
+            <script>
+                console.log("About to Render Skills")
+                console.log("{{ res.skill.all }}")
+            </script>
+            {% include "Skill/index.html" with varDataObject=res.skill.all %}
+            <script>
+                console.log("About to Render Jobs")
+                console.log("{{ res.job.all }}")
+            </script>
+            {% include "Job/index.html" with varDataObject=res.job.all %}
+            <script>
+                console.log("About to Render References")
+                console.log("{{ res.reference.all }}")
+            </script>
+            {% include "Reference/index.html" with varDataObject=res.reference.all %}
+        </li>
+    </ul>
+</div>
 {% endfor %} {% else %}
 <p>No RESUMES are available.</p>
 {% endif %}

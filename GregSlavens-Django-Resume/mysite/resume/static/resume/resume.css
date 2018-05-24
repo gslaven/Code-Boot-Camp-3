@@ -1,17 +1,9 @@
-/* This just lays out what colors I am choosing to make the website, 
-   so I don't have to look all over to find them while developing. */
-
-:Color_Pallette {
-  color: black;
-  color: #666;
-  color: #143041;
-  color: #223e4d;
-  color: #447e9b;
-  color: #417690;
-  color: #79aec8;
-  color: #f5dd5d;
-  color: #eea;
-  color: white;
+@import url("color_pallete.css");
+body {
+  padding: --main-padding;
+  border: 1px solid #eee;
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  padding: var(--main-padding);
 }
 
 .App {
@@ -42,35 +34,79 @@
 
 li {
   text-align: left;
-  background-color: #eaeaea;
+  color: var(--bg-and-text-dark);
+  background-color: var(--row-light);
+  padding: var(--list-padding);
+  /* padding-left: 15px; */
+  margin-left: 30px;
 }
 
-h1,
+ul {
+  text-align: left;
+  color: var(--bg-and-text-dark);
+  background-color: var(--row-light);
+  padding: var(--list-padding);
+}
+
+.UL_BG_Color {
+  background-color: var(--row-light);
+  padding: var(--main-padding);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+h1 {
+  color: var(--text-over-bg-dark);
+  background-color: var(--bg-and-text-dark);
+  border-radius: 8px;
+  padding: var(--header-padding);
+}
+
+h2 {
+  color: var(--text-over-bg-semi-dark);
+  background-color: var(--bg-and-text-semi-dark);
+  border-radius: 8px;
+  padding: var(--header-padding);
+}
+
 h3 {
-  color: #eea;
-  background-color: #223e4d;
+  color: var(--text-over-bg-semi-light);
+  background-color: var(--bg-and-text-semi-light);
+  border-radius: 8px;
+  padding: var(--header-padding);
 }
 
-h2,
 h4 {
-  color: #f5dd5d;
-  background-color: #79aec8;
+  color: var(--text-over-bg-semi-light);
+  background-color: var(--bg-and-text-light);
+  border-radius: 8px;
+  padding: var(--header-padding);
+}
+
+a {
+  color: var(--bg-and-text-dark);
+}
+
+a:hover {
+  color: var(--bg-and-text-semi-light);
 }
 
 .NavBar {
   display: flex;
   overflow: hidden;
-  background-color: #143041;
+  background-color: var(--bg-and-text-dark);
   font-family: Arial;
-  color: #f5dd5d;
+  color: var(--text-over-bg-dark);
   font-size: 20px;
   text-align: center;
   font-variant: small-caps;
-  padding: 10px 10px 10px 10px;
+  padding: var(--header-padding);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .NavBarSpan {
-  color: #666;
+  color: var(--row-semi-dark);
   margin: 0px, 0px, 0px, 5px;
 }
 

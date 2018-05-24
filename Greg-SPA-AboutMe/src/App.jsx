@@ -74,12 +74,12 @@ const App = ({ in: inProp }) => {
                                 ...defaultStyle,
                                 ...transitionStyles[state]
                             }}>
-                                {/* <Switch> */}
+                                <Switch>
                                     <Route exact path="/" component={Home} />
                                     <Route path="/Home" component={Home} />
                                     <Route path="/Contact" component={Contact} />
                                     <Route component={UnknownUrl} />
-                                {/* </Switch> */}
+                                </Switch>
                             </div>
                         )}
                     </Transition>
