@@ -22,11 +22,12 @@
         <br> Start Date: {{ job.start }}
         <br> End Date: {{ job.end }}
         <br> Skills: {% if job.skill %} {% for s in job.skill.all %}
-        <a href="../skill/{{ s.id }}/">
-            <ul>
-                <li>{{ s.name }}</li>
-            </ul>
-        </a>
+        <ul>
+            <li>
+                <a href="../skill/{{ s.id }}/">
+                    {{ s.name }} </a>
+            </li>
+        </ul>
         {% endfor %} {% else %} No SKILLS associated for this job. {% endif %}
     </li>
     {% endfor %}

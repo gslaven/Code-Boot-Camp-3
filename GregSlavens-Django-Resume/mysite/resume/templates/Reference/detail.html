@@ -5,15 +5,15 @@
     console.log("{{ detailObj.all }}")
 </script>
 <h3>{{detailObj.name}}</h3>
-<p>Relationship: {{ detailObj.relation }}</p>
-<p>Address: {{ detailObj.address }}</p>
-<p>Phone: {{ detailObj.phone }}</p>
-<p> E-Mail:
+<p><b>Relationship:</b> {{ detailObj.relation }}</p>
+<p><b>Address:</b> {{ detailObj.address }}</p>
+<p><b>Phone:</b> {{ detailObj.phone }}</p>
+<p><b>E-Mail:</b>
     <a href="mailto:{{ detailObj.email }}">
         {{ detailObj.email }}
     </a>
 </p>
-<p> Website:
+<p><b>Website:</b>
     <a href="{{ detailObj.website }}/">
         {{ detailObj.website }}
     </a>

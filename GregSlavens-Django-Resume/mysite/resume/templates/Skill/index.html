@@ -19,8 +19,9 @@
         <script>
             console.log("{{ sk.job.all }}")
         </script>
-        <h5>Years: {{ sk.years }} {{sk.years_modifier}}</h5>
-        Jobs: {% if sk.job2skill %} {% for j in sk.job2skill.all %}
+        <b>Years:</b> {{ sk.years }} {{sk.years_modifier}}
+        <br>
+        <b>Jobs:</b> {% if sk.job2skill %} {% for j in sk.job2skill.all %}
         <ul>
             <li>
                 <a href="../job/{{ j.id }}/">

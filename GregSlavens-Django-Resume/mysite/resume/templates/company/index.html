@@ -9,15 +9,21 @@
 <ul>
     {% for comp in varDataObject.all %}
     <li>
-        Company:
-        <h4><a href="../company/{{comp.id }}">{{ comp.name }} </a></h4>
-        <p>Description: {{ comp.desc }}</p>
-        <p>Address: {{ comp.address }}</p>
-        <p>Phone: {{ comp.phone }}</p>
-        <p> E-Mail:
+        <h4>
+            <a href="../company/{{comp.id }}">{{ comp.name }} </a>
+        </h4>
+        <p>
+            <b>Description:</b> {{ comp.desc }}</p>
+        <p>
+            <b>Address:</b> {{ comp.address }}</p>
+        <p>
+            <b>Phone:</b> {{ comp.phone }}</p>
+        <p>
+            <b>E-Mail:</b>
             <a href="mailto:{{ comp.email }}">{{ comp.email }} </a>
         </p>
-        <p> Website:
+        <p>
+            <b>Website:</b>
             <a href="{{ comp.website }}">{{ comp.website }} </a>
         </p>
     </li>

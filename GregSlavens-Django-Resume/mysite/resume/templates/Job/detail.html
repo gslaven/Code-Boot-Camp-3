@@ -5,10 +5,10 @@
     console.log("{{detailObj}}")
 </script>
 <h3>{{detailObj.title}}</h3>
-<p>Company: {{ detailObj.company }} </p>
-<p>Start Date: {{ detailObj.start }} </p>
-<p>End Date: {{ detailObj.end }} </p>
-<p>Skills: {% if detailObj.skill %} {% for s in detailObj.skill.all %}
+<p><b>Company:</b> {{ detailObj.company }} </p>
+<p><b>Start Date:</b></Start> {{ detailObj.start }} </p>
+<p><b>End Date:</b> {{ detailObj.end }} </p>
+<p><b>Skills:</b> {% if detailObj.skill %} {% for s in detailObj.skill.all %}
     <p>
         <a href="../../skill/{{ s.id }}/">{{ s.name }}</a>
     </p>

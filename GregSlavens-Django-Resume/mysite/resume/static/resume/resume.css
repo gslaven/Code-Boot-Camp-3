@@ -60,6 +60,7 @@ h1 {
   background-color: var(--bg-and-text-dark);
   border-radius: 8px;
   padding: var(--header-padding);
+  font-variant: small-caps;
 }
 
 h2 {
@@ -67,6 +68,7 @@ h2 {
   background-color: var(--bg-and-text-semi-dark);
   border-radius: 8px;
   padding: var(--header-padding);
+  font-variant: small-caps;
 }
 
 h3 {
@@ -74,6 +76,7 @@ h3 {
   background-color: var(--bg-and-text-semi-light);
   border-radius: 8px;
   padding: var(--header-padding);
+  font-variant: small-caps;
 }
 
 h4 {
@@ -81,6 +84,7 @@ h4 {
   background-color: var(--bg-and-text-light);
   border-radius: 8px;
   padding: var(--header-padding);
+  font-variant: small-caps;
 }
 
 a {
