@@ -64,8 +64,8 @@ def index(request):
     varDataObject = funDataObject(request.path).objects
     context = {'varDataObject': varDataObject, }
     return render(request,
-                  templateFolder(request.path) + '/index.html',
-                  context)
+        templateFolder(request.path) + '/index.html',
+        context)
 
 
 def detail(request, param_id):
