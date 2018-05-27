@@ -33,7 +33,7 @@ class Phone(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.Country_code + '* (' + self.area_code + ') ' + self.prefix + '-' + self.suffix
+        return '+' + self.Country_code + ' (' + self.area_code + ') ' + self.prefix + '-' + self.suffix
 
     class Meta:
         unique_together = ('area_code', 'prefix', 'suffix')

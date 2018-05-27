@@ -55,7 +55,7 @@ def templateFolder(param_request_path):
             # RESUME TO IT FOR A DEFAULT
             zReturnVal = "resume"
     else:
-        # Ref failed, so make this a resume request as a failsafe
+        # Req failed, so make this a resume request as a failsafe
         zReturnVal = varPathArray[3]
     return zReturnVal
 

@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     # ex: /Resume/
-    path('', views.index, name='index'),
     path('<int:param_id>/', views.detail, name='detail'),
+    path('', views.index, name='index'),
 ]

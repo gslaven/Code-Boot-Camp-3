@@ -20,7 +20,10 @@
             console.log("Inside Resume Loop - Resume - {{ res.resume_type }}")
         </script>
         <li>
-            <h2>{{ res }}</h2>
+            <h2>
+                <a href="../resume/resume/{{ res.id }}/" 
+                style="color:var(--text-over-bg-dark);" class="ResumeHeader">{{ res }}</a>
+            </h2>
             <script>
                 console.log("About to Render Summary")
                 console.log("{{ res.summary.all }}")

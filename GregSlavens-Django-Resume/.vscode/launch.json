@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Django",
-            "type": "python",
+            "type": "pythonExperimental",
             "request": "launch",
             "program": "${workspaceFolder}/mysite/manage.py",
             "args": [
@@ -14,17 +14,7 @@
                 "--noreload",
                 "--nothreading"
             ],
-            "debugOptions": [
-                "RedirectOutput",
-                "Django"
-            ]
-        },
-        {
-            "type": "chrome",
-            "request": "attach",
-            "name": "Attach to Chrome",
-            "port": 8000,
-            "webRoot": "${workspaceFolder}/mysite"
+            "django": true
         },
     ]
 }

@@ -2,39 +2,33 @@
 <link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
 
 <script>
-    console.log("In Resume\Index.Html")
-    console.log("{{ varDataObject.all }}")
+    console.log("In Resume\detail.Html")
+    console.log("{{ detailObj }}")
 </script>
-<h1>Greg Slavens - Resumes</h1>
-{% if detailObj %} {% for res in detailObj.all %}
+{% if detailObj %}
+<h1>{{ detailObj.resume_owner }} - {{ detailObj.resume_type }} </h1>
 <ul>
     <script>
-        console.log("Inside Resume Loop - Resume - {{ res.resume_type }}")
-    </script>
-    <li>
-        <h2>{{ res }}</h2>
-    </li>
-    <script>
         console.log("About to Render Summary")
-        console.log("{{ res.summary.all }}")
+        console.log("{{ detailObj.summary.all }}")
     </script>
-    {% include "Summary/detail.html" with detailObj=res.summary.first %}
+    {% include "Summary/detail.html" with detailObj=detailObj.summary.first %}
     <script>
         console.log("About to Render Skills")
-        console.log("{{ res.skill.all }}")
+        console.log("{{ detailObj.skill.all }}")
     </script>
-    {% include "Skill/index.html" with varDataObject=res.skill.all %}
+    {% include "Skill/index.html" with varDataObject=detailObj.skill.all %}
     <script>
         console.log("About to Render Jobs")
-        console.log("{{ res.job.all }}")
+        console.log("{{ detailObj.job.all }}")
     </script>
-    {% include "Job/index.html" with varDataObject=res.job.all %}
+    {% include "Job/index.html" with varDataObject=detailObj.job.all %}
     <script>
         console.log("About to Render References")
-        console.log("{{ res.reference.all }}")
+        console.log("{{ detailObj.reference.all }}")
     </script>
-    {% include "Reference/index.html" with varDataObject=res.reference.all %}
+    {% include "Reference/index.html" with varDataObject=detailObj.reference.all %}
 </ul>
-{% endfor %} {% else %}
+{% else %}
 <p>No RESUMES are available.</p>
 {% endif %}

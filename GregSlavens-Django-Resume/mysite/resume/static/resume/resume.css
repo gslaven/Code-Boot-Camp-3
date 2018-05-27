@@ -91,6 +91,10 @@ a {
   color: var(--bg-and-text-dark);
 }
 
+a.ResumeHeader {
+  color: var(--bg-and-text---text-over-bg-dark);
+}
+
 a:hover {
   color: var(--bg-and-text-semi-light);
 }

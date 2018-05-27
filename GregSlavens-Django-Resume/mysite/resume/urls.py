@@ -19,7 +19,8 @@ from . import views
 
 urlpatterns = [
     # ex: /Resume/
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
+    re_path(r'', include('resume.urls_Resume')),
     re_path(r'^(?i)resume/', include('resume.urls_Resume')),
     re_path(r'^(?i)company/', include('resume.urls_Company')),
     re_path(r'^(?i)job/', include('resume.urls_Job')),
