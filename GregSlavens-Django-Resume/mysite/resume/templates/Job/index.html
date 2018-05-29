@@ -9,7 +9,7 @@
     {% for job in varDataObject %}
     <li>
         <h4>
-            <a href="{{ job.id }}/">{{ job.title }} </a>
+            <a href="../../job/{{ job.id }}/">{{ job.title }} </a>
         </h4>
         Description: {{ job.desc }}
         <br> Duties: {% if job.duty %} {% for d in job.duty.all %}
@@ -18,13 +18,13 @@
         </ul>
         {% endfor %} {% else %} No DUTIES associated for this job. {% endif %}
         <br> Company:
-        <a href="../company/{{ job.company.id }}/">{{ job.company }} </a>
+        <a href="../../company/{{ job.company.id }}/">{{ job.company }} </a>
         <br> Start Date: {{ job.start }}
         <br> End Date: {{ job.end }}
         <br> Skills: {% if job.skill %} {% for s in job.skill.all %}
         <ul>
             <li>
-                <a href="../skill/{{ s.id }}/">
+                <a href="../../skill/{{ s.id }}/">
                     {{ s.name }} </a>
             </li>
         </ul>
