@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 
 urlpatterns = [
-    re_path(r'^(?i)greg-slavens-resumes/', include('resume.urls')),
     re_path(r'^(?i)admin/', admin.site.urls),
+    # ex: /Resume/
+    re_path(r'^(?i)greg-slavens-resumes/',
+            include('resume.urls')),
 ]
