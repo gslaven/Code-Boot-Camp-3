@@ -22,6 +22,7 @@ class Address(models.Model):
 
     class Meta:
         unique_together = ('street', 'zip_code')
+        ordering = ['street']
 
 
 class Phone(models.Model):
@@ -37,7 +38,8 @@ class Phone(models.Model):
 
     class Meta:
         unique_together = ('area_code', 'prefix', 'suffix')
-
+        ordering = ['area_code', 'prefix', 'suffix']
+        
 
 class Company(models.Model):
     name = models.CharField(max_length=256, unique=True)
@@ -52,6 +54,8 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
 
 class Skill(models.Model):
     name = models.CharField(max_length=256, unique=True)
@@ -64,6 +68,9 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class Duty(models.Model):
     desc = models.TextField(unique=True)
@@ -73,6 +80,8 @@ class Duty(models.Model):
     def __str__(self):
         return truncatewords(self.desc, 8)
 
+    class Meta:
+        ordering = ['desc']
 
 class Job(models.Model):
     title = models.CharField(max_length=256)
@@ -90,6 +99,7 @@ class Job(models.Model):
 
     class Meta:
         unique_together = ('title', 'company')
+        ordering = ['title']
 
 
 class School(models.Model):
@@ -123,6 +133,7 @@ class School(models.Model):
 
     class Meta:
         unique_together = ('name', 'degree', 'major')
+        ordering = ['name']
 
 
 class Relation(models.Model):
@@ -133,6 +144,9 @@ class Relation(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
 
 
 class Reference(models.Model):
@@ -152,6 +166,7 @@ class Reference(models.Model):
 
     class Meta:
         unique_together = ('name', 'company')
+        ordering = ['name']
 
 
 class ResumeType(models.Model):
@@ -173,6 +188,9 @@ class Summary(models.Model):
     def __str__(self):
         return self.name + ' - ' + truncatewords(self.desc, 8)
 
+    class Meta:
+        ordering = ['name']
+
 
 class ResumeOwner(models.Model):
     first_name = models.CharField(max_length=256)
@@ -192,6 +210,9 @@ class ResumeOwner(models.Model):
 
     def __str__(self):
         return self.name_web_display
+
+    class Meta:
+        ordering = ['last_name', 'first_name']
 
 
 class Resume(models.Model):

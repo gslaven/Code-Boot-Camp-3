@@ -7,6 +7,12 @@
 </script>
 <h3>{{detailObj.title}}</h3>
 <p><b>Company:</b> {{ detailObj.company }} </p>
+<p><b>Description:</b> {{ detailObj.desc }} </p>
+<br> Duties: {% if detailObj.duty %} {% for d in detailObj.duty.all %}
+<ul>
+    <li>{{ d.desc }}</li>
+</ul>
+{% endfor %} {% else %} No DUTIES associated for this job. {% endif %}
 <p><b>Start Date:</b></Start> {{ detailObj.start }} </p>
 <p><b>End Date:</b> {{ detailObj.end }} </p>
 <p><b>Skills:</b> {% if detailObj.skill %} {% for sk in detailObj.skill.all %}
