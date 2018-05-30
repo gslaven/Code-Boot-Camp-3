@@ -1,22 +1,6 @@
 {% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
-
-<script>
-    console.log("In Skills - Index.Html - Printing varDataObject");
-    console.log("{{ varDataObject.all }}");
-
-    function funPath(paramTemplateText, paramID) {
-        console.log("In funPath");
-
-        console.log(window.location.href.toLowerCase().split("#").split("resume").split("company").split("job").spl("reference").split("skill").spl("summary"));
-        console.log(paramTemplateText);
-        console.log(paramID);
-        console.log(window.location.href + paramTemplateText + "/" + paramID);
-        window.location.href = window.location.href + paramTemplateText + "/" + paramID;
-        console.log(window.location.href);
-        // return window.location.href
-    }
-</script>
 <h3>Skills</h3>
 {% if varDataObject %}
 <ul>
@@ -26,7 +10,9 @@
     </script>
     <li>
         <h4>
-            <a href="#" onclick='funPath("Skill", {{ sk.id }})'>{{ sk.name }}</a>
+            <a href="#" onclick='funPath("Skill", {{ sk.id }})'>
+                {{ sk.name }}
+            </a>
         </h4>
         <script>
             console.log("{{ sk.job.all }}")
@@ -36,7 +22,7 @@
         <b>Jobs:</b> {% if sk.job2skill %} {% for j in sk.job2skill.all %}
         <ul>
             <li>
-                <a href="../../job/{{ j.id }}/">
+                <a href="#" onclick='funPath("Job", {{ j.id }})'>
                     {{ j.title }}
                 </a>
             </li>
