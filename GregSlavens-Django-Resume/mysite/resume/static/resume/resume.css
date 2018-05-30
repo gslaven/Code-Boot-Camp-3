@@ -89,6 +89,7 @@ h4 {
 
 a {
   color: var(--bg-and-text-dark);
+  text-decoration-line: underline;
 }
 
 a.ResumeHeader {
