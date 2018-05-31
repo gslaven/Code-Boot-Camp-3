@@ -9,7 +9,7 @@
         <h4>
             <a href="#" onclick='funPath("Job", {{ job.id }})'>{{ job.title }} </a>
         </h4>
-        Description: {{ job.desc }}
+        Description: {{ job.desc|linebreaks }}
         <br> Duties: {% if job.duty %} {% for d in job.duty.all %}
         <ul>
             <li>{{ d.desc }}</li>
