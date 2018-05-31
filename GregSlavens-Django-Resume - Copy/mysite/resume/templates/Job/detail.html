@@ -1,9 +1,0 @@
-<h3>{{detailObj.title}}</h3>
-<p>Company: {{ detailObj.company }} </p>
-<p>Start Date: {{ detailObj.start }} </p>
-<p>End Date: {{ detailObj.end }} </p>
-<p>Skills: {% if detailObj.skill %} {% for s in detailObj.skill.all %}
-    <p>
-        <a href="../../skill/{{ s.id }}/">{{ s.name }}</a>
-    </p>
-    {% endfor %} {% else %} No SKILLS associated. {% endif %}

@@ -1,0 +1,34 @@
+{% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
+<script>
+    console.log("In Resume\detail.Html")
+    console.log("{{ detailObj }}")
+</script>
+{% if detailObj %}
+<h1>{{ detailObj.resume_owner }} - {{ detailObj.resume_type }} </h1>
+<ul>
+    <script>
+        console.log("About to Render Summary")
+        console.log("{{ detailObj.summary.all }}")
+    </script>
+    {% include "Summary/detail.html" with detailObj=detailObj.summary.first %}
+    <script>
+        console.log("About to Render Skills")
+        console.log("{{ detailObj.skill.all }}")
+    </script>
+    {% include "Skill/index.html" with varDataObject=detailObj.skill.all %}
+    <script>
+        console.log("About to Render Jobs")
+        console.log("{{ detailObj.job.all }}")
+    </script>
+    {% include "Job/index.html" with varDataObject=detailObj.job.all %}
+    <script>
+        console.log("About to Render References")
+        console.log("{{ detailObj.reference.all }}")
+    </script>
+    {% include "Reference/index.html" with varDataObject=detailObj.reference.all %}
+</ul>
+{% else %}
+<p>No RESUMES are available.</p>
+{% endif %}

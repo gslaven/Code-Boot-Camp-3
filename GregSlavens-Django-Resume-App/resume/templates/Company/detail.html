@@ -1,0 +1,21 @@
+{% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
+
+<script>
+    console.log("{{ detailObj.all }}")
+</script>
+<h3>{{ detailObj.name }}</h3>
+<p><b>Description:</b> {{ detailObj.desc }}</p>
+<p><b>Address:</b> {{ detailObj.address }}</p>
+<p><b>Phone:</b> {{ detailObj.phone }}</p>
+<p><b></p>E-Mail:
+    <a href="mailto:{{ detailObj.email }}">
+        {{ detailObj.email }}
+    </a>
+</p>
+<p><b>Website:</b>
+    <a href="{{ detailObj.website }}/">
+        {{ detailObj.website }}
+    </a>
+</p>
