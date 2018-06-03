@@ -1,0 +1,31 @@
+{% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
+<h3>Companies</h3>
+{% if varDataObject.first != None %}
+<ul>
+    {% for comp in varDataObject.all %}
+    <li>
+        <h4>
+            <a href="#" onclick='funPath("Company", {{ comp.id }})'>{{ comp.name }} </a>
+        </h4>
+        <p>
+            <b>Description:</b> {{ comp.desc|linebreaks }}</p>
+        <p>
+            <b>Address:</b> {{ comp.address }}</p>
+        <p>
+            <b>Phone:</b> {{ comp.phone }}</p>
+        <p>
+            <b>E-Mail:</b>
+            <a href="mailto:{{ comp.email }}">{{ comp.email }} </a>
+        </p>
+        <p>
+            <b>Website:</b>
+            <a href="{{ comp.website }}">{{ comp.website }} </a>
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No COMPANIES are available.</p>
+{% endif %}

@@ -1,0 +1,23 @@
+{% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" /> {% if varDataObject.first != None %} {% for summ in varDataObject.all %}
+<script>
+    console.log("{{ summ.name }}")
+    console.log("{{ summ }}")
+</script>
+<h3>{{ summ.name }}</h3>
+<ul>
+    <li>
+        <h4>
+            <a href="#" onclick='funPath("Summary", {{ sk.id }})'>{{ summ.name }}</a>
+        </h4>
+        <h5>
+            {{ summ.desc|linebreaks }}
+        </h5>
+        {% endfor %}
+    </li>
+</ul>
+{% else %}
+<h3>Summaries</h3>
+<p>No SUMMARIES are available.</p>
+{% endif %}

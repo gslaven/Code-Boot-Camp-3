@@ -20,5 +20,5 @@ urlpatterns = [
     re_path(r'^(?i)admin-ugly/', admin.site.urls),
     # ex: /Resume/
     re_path(r'^(?i)resumes/',
-            include('resume.urls')),
+            include('resumes.urls')),
 ]

@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/mysite/manage.py",
             "args": [
-                "runserver",
+                "runserver 127.0.0.1:8090",
                 "--noreload",
                 "--nothreading"
             ],

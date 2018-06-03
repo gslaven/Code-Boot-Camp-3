@@ -1,0 +1,18 @@
+{% load static %}
+<script src="{% static 'resume/resume.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
+
+<script>
+    console.log("{{ detailObj.all }}")
+</script>
+<h3>{{detailObj.name}}</h3>
+<p><b>Description:</b> {{ detailObj.desc|linebreaks }}</p>
+<p><b>Years:</b> {{ detailObj.years }} {{detailObj.years_modifier}} </p>
+<p><b>Jobs:</b> {% if detailObj.job2skill %} {% for j in detailObj.job2skill.all %}
+    <p>
+        <a href="#" onclick='funPath("Job", {{ j.id }})'>
+            {{ j.title }}
+        </a>
+    </p>
+    {% endfor %} {% else %} No JOBS associated. {% endif %}
+</p>
