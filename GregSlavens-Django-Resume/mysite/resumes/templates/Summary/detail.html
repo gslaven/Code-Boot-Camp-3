@@ -1,12 +1,13 @@
-{% load static %}
-<script src="{% static 'resume/resume.js' %}"></script>
+{% extends 'resume/BaseCssAndJS.html' %} 
+{% block content %}
 <script>
     console.log("In Summary/Detail.html")
-    console.log("{{ detailObj.all }}")
+    console.log("{{ varDataObject.all }}")
 </script>
-<h3>{{detailObj.name}}</h3>
+<h3>{{varDataObject.name}}</h3>
 <ul>
     <li>
-        <p>{{ detailObj.desc|linebreaks }}</p>
+        <p>{{ varDataObject.desc|linebreaks }}</p>
     </li>
 </ul>
+{% endblock %}

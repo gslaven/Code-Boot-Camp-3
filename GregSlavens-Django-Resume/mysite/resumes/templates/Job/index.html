@@ -1,7 +1,5 @@
-{% load static %}
-<script src="{% static 'resume/resume.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
-<h3>Jobs</h3>
+{% extends 'resume/BaseCssAndJS.html' %} 
+{% block content %}
 {% if varDataObject.first != None %}
 <ul>
     {% for job in varDataObject %}
@@ -33,3 +31,4 @@
 {% else %}
 <p>No JOBS are available.</p>
 {% endif %}
+{% endblock %}

@@ -14,21 +14,15 @@
         console.log("Inside Base.html - <body>")
     </script>
     <div class="NavBar">
-        {% if varDataObject.first != None %} {% for res in varDataObject.all %}
         <div>
             <img src="{% static 'resume/logo.svg' %}" class="App-logo" alt="logo" />
         </div>
-        <h1>{{ res.resume_owner.name_web_display }} -
+        <h1>Django -
             <span class="NavBarSpan">Resumes</span>
         </h1>
     </div>
-    <div class="UL_BG_Color">
+    <div id="BaseHtmlBlockContent">
         {% block content %} {% endblock %}
-    </div>
-    {% endfor %} {% else %}
-    <h1>Greg Slavens Django Resumes</h1>
-    <p>No RESUMES are available.</p>
-    {% endif %}
 </body>
 
 </html>

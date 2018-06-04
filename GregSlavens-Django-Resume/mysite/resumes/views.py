@@ -63,9 +63,9 @@ def index(request):
 
 
 def detail(request, param_id):
-    detailObj = get_object_or_404(funDataObject(request.path), pk=param_id)
+    varDataObject = get_object_or_404(funDataObject(request.path), pk=param_id)
     return render(
         request,
         templateFolder(request.path) + '/detail.html',
-        {'detailObj': detailObj}
+        {'varDataObject': varDataObject}
     )

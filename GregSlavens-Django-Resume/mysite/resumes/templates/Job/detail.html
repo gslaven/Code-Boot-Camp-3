@@ -1,22 +1,21 @@
-{% load static %}
-<script src="{% static 'resume/resume.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'resume/resume.css' %}" />
-
+{% extends 'resume/base.html' %} 
+{% block content %}
 <script>
-    console.log("{{detailObj}}")
+    console.log("{{varDataObject}}")
 </script>
-<h3>{{detailObj.title}}</h3>
-<p><b>Company:</b> {{ detailObj.company }} </p>
-<p><b>Description:</b> {{ detailObj.desc|linebreaks }} </p>
-<br> Duties: {% if detailObj.duty %} {% for d in detailObj.duty.all %}
+<h3>{{varDataObject.title}}</h3>
+<p><b>Company:</b> {{ varDataObject.company }} </p>
+<p><b>Description:</b> {{ varDataObject.desc|linebreaks }} </p>
+<br> Duties: {% if varDataObject.duty %} {% for d in varDataObject.duty.all %}
 <ul>
     <li>{{ d.desc|linebreaks }}</li>
 </ul>
 {% endfor %} {% else %} No DUTIES associated for this job. {% endif %}
-<p><b>Start Date:</b></Start> {{ detailObj.start }} </p>
-<p><b>End Date:</b> {{ detailObj.end }} </p>
-<p><b>Skills:</b> {% if detailObj.skill %} {% for sk in detailObj.skill.all %}
+<p><b>Start Date:</b></Start> {{ varDataObject.start }} </p>
+<p><b>End Date:</b> {{ varDataObject.end }} </p>
+<p><b>Skills:</b> {% if varDataObject.skill %} {% for sk in varDataObject.skill.all %}
     <p>
         <a href="#" onclick='funPath("Skill", {{ sk.id }})'>{{ sk.name }}</a>
     </p>
     {% endfor %} {% else %} No SKILLS associated. {% endif %}
+    {% endblock %}
