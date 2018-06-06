@@ -1,4 +1,1 @@
 dispatch:
-  # Default service serves the typical web resources and all static resources.
-  - url: "*/resumes"
-    service: default

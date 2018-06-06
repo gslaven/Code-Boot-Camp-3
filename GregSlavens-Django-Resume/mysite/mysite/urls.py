@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.conf.urls import url
 
 urlpatterns = [
-    re_path(r'^(?i)admin-ugly/', admin.site.urls),
+    url(r'^(?i)admin-ugly/', admin.site.urls),
     # ex: /Resume/
-    re_path(r'^(?i)resumes/',
+    url(r'^(?i)resumes/',
             include('resumes.urls')),
 ]
